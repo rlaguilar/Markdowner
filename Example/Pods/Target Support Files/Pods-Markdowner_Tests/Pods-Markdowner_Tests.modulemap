@@ -1,0 +1,6 @@
+framework module Pods_Markdowner_Tests {
+  umbrella header "Pods-Markdowner_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

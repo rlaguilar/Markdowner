@@ -1,0 +1,16 @@
+PODS:
+  - Markdowner (0.1.0)
+
+DEPENDENCIES:
+  - Markdowner (from `../`)
+
+EXTERNAL SOURCES:
+  Markdowner:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Markdowner: a6dcdffd7f123a1a499070d190ccde0724a38c91
+
+PODFILE CHECKSUM: 659dba79ec2c067f5ca2f8b0b87e5585ee3b0fcf
+
+COCOAPODS: 1.5.3

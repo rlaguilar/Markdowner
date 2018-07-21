@@ -29,9 +29,9 @@
 
 /* Begin PBXFileReference section */
 		27C5410EA75AB93E586DA217 /* Pods-Markdowner_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Markdowner_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Markdowner_Tests/Pods-Markdowner_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		2C3C45E80BBC77316727E66F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		46D57396F37B9A343A7883FF /* Markdowner.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = Markdowner.podspec; path = ../Markdowner.podspec; sourceTree = "<group>"; };
-		5599A3F11728C1CB85E6E9F6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		2C3C45E80BBC77316727E66F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		46D57396F37B9A343A7883FF /* Markdowner.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Markdowner.podspec; path = ../Markdowner.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5599A3F11728C1CB85E6E9F6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* Markdowner_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Markdowner_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +212,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 9V323J43KF;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -469,6 +470,7 @@
 			baseConfigurationReference = DC7259D5876AD6650277B149 /* Pods-Markdowner_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9V323J43KF;
 				INFOPLIST_FILE = Markdowner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -484,6 +486,7 @@
 			baseConfigurationReference = 858D224CFA6E49D4B0E3E6FE /* Pods-Markdowner_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9V323J43KF;
 				INFOPLIST_FILE = Markdowner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
