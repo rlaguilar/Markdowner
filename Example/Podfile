@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Markdowner_Example' do
+  pod 'Markdowner', :path => '../'
+
+  target 'Markdowner_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
