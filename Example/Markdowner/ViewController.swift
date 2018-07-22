@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Markdowner
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var wrapperView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let textView = MarkdownTextView(frame: wrapperView.bounds)
+        wrapperView.addSubview(textView)
+        textView.frame = wrapperView.bounds
     }
 
     override func didReceiveMemoryWarning() {

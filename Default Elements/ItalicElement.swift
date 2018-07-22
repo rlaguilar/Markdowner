@@ -9,8 +9,8 @@ import Foundation
 
 public class ItalicElement: SimpleMarkdownElement {
     public init() {
-        let asteriskPattern = "\\*.*?\\*"
-        let underscorePattern = "_.*?_"
+        let asteriskPattern = "(?<!\\*)\\*(?![ \\*]).*?(?<![ \\*])\\*(?!\\*)"
+        let underscorePattern = "(?<!_)_(?![ _]).*?(?<![ _])_(?!_)"
         let pattern = "\(asteriskPattern)|\(underscorePattern)"
         
         guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else {

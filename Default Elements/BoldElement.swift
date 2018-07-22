@@ -9,7 +9,7 @@ import Foundation
 
 public class BoldElement: SimpleMarkdownElement {
     public init() {
-        guard let regex = try? NSRegularExpression(pattern: "\\*\\*.*?\\*\\*", options: []) else {
+        guard let regex = try? NSRegularExpression(pattern: "\\*\\*.+?\\*\\*", options: []) else {
             fatalError()
         }
         

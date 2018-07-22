@@ -25,6 +25,10 @@ public class MarkdownElement {
         let value: Any
         let startIndex: Int
         let length: Int
+        
+        var range: NSRange {
+            return NSRange(location: startIndex, length: length)
+        }
     }
 }
 

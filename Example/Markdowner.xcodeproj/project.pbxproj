@@ -20,6 +20,7 @@
 		F19243E32103DCDB0056FD9B /* ItalicElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243E22103DCDB0056FD9B /* ItalicElementTests.swift */; };
 		F19243E72103E3CC0056FD9B /* BulletElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243E62103E3CC0056FD9B /* BulletElementTests.swift */; };
 		F19243EB2103EE570056FD9B /* HeaderElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243EA2103EE570056FD9B /* HeaderElementTests.swift */; };
+		F19243F32104FA880056FD9B /* MarkdownParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243F22104FA880056FD9B /* MarkdownParserTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		F19243E22103DCDB0056FD9B /* ItalicElementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItalicElementTests.swift; sourceTree = "<group>"; };
 		F19243E62103E3CC0056FD9B /* BulletElementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletElementTests.swift; sourceTree = "<group>"; };
 		F19243EA2103EE570056FD9B /* HeaderElementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderElementTests.swift; sourceTree = "<group>"; };
+		F19243F22104FA880056FD9B /* MarkdownParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownParserTests.swift; sourceTree = "<group>"; };
 		F4BE00D1B6CBE61A8449F158 /* Pods-Markdowner_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Markdowner_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Markdowner_Tests/Pods-Markdowner_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +140,7 @@
 				F19243D92103D0FE0056FD9B /* Default Elements */,
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				F19243F22104FA880056FD9B /* MarkdownParserTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -243,11 +246,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 9V323J43KF;
+						DevelopmentTeam = 5DA656H26H;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 5DA656H26H;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -364,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F19243E72103E3CC0056FD9B /* BulletElementTests.swift in Sources */,
+				F19243F32104FA880056FD9B /* MarkdownParserTests.swift in Sources */,
 				F19243EB2103EE570056FD9B /* HeaderElementTests.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 				F19243DF2103D33A0056FD9B /* String+.swift in Sources */,
@@ -506,7 +511,7 @@
 			baseConfigurationReference = DC7259D5876AD6650277B149 /* Pods-Markdowner_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9V323J43KF;
+				DEVELOPMENT_TEAM = 5DA656H26H;
 				INFOPLIST_FILE = Markdowner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -522,7 +527,7 @@
 			baseConfigurationReference = 858D224CFA6E49D4B0E3E6FE /* Pods-Markdowner_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9V323J43KF;
+				DEVELOPMENT_TEAM = 5DA656H26H;
 				INFOPLIST_FILE = Markdowner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -537,6 +542,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F4BE00D1B6CBE61A8449F158 /* Pods-Markdowner_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 5DA656H26H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -559,6 +565,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 27C5410EA75AB93E586DA217 /* Pods-Markdowner_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 5DA656H26H;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

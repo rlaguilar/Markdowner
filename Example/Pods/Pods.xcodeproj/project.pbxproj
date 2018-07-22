@@ -20,6 +20,9 @@
 		F19243E12103DBB00056FD9B /* ItalicElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243E02103DBB00056FD9B /* ItalicElement.swift */; };
 		F19243E52103E14A0056FD9B /* BulletElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243E42103E14A0056FD9B /* BulletElement.swift */; };
 		F19243E92103E9ED0056FD9B /* HeaderElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243E82103E9ED0056FD9B /* HeaderElement.swift */; };
+		F19243ED21041E100056FD9B /* MarkdownTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243EC21041E100056FD9B /* MarkdownTextStorage.swift */; };
+		F19243EF2104213F0056FD9B /* MarkdownTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243EE2104213F0056FD9B /* MarkdownTextView.swift */; };
+		F19243F121042E8D0056FD9B /* MarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243F021042E8D0056FD9B /* MarkdownParser.swift */; };
 		FF108AE8D6AD0A1F35E5A7C2A89C0FAD /* Pods-Markdowner_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CB85788DCDF500BF412D5FC427CC8452 /* Pods-Markdowner_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -78,6 +81,9 @@
 		F19243E02103DBB00056FD9B /* ItalicElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItalicElement.swift; sourceTree = "<group>"; };
 		F19243E42103E14A0056FD9B /* BulletElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletElement.swift; sourceTree = "<group>"; };
 		F19243E82103E9ED0056FD9B /* HeaderElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderElement.swift; sourceTree = "<group>"; };
+		F19243EC21041E100056FD9B /* MarkdownTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTextStorage.swift; sourceTree = "<group>"; };
+		F19243EE2104213F0056FD9B /* MarkdownTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTextView.swift; sourceTree = "<group>"; };
+		F19243F021042E8D0056FD9B /* MarkdownParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownParser.swift; sourceTree = "<group>"; };
 		F6DC76B5B139EF6AF5B41521E49DE1BF /* Markdowner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Markdowner.modulemap; sourceTree = "<group>"; };
 		FBABFFB2237419C5B0B7D28D72656C6C /* Markdowner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Markdowner-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,9 +210,11 @@
 			isa = PBXGroup;
 			children = (
 				F19243D52103CF880056FD9B /* Default Elements */,
-				F19243D32103C6540056FD9B /* MarkdownElement.swift */,
 				F0EFFD777410BC7E7BE19232FAB31378 /* Pod */,
 				C698D2D832F1609438AE8FC55C7B1E77 /* Support Files */,
+				F19243EC21041E100056FD9B /* MarkdownTextStorage.swift */,
+				F19243EE2104213F0056FD9B /* MarkdownTextView.swift */,
+				F19243F021042E8D0056FD9B /* MarkdownParser.swift */,
 			);
 			name = Markdowner;
 			path = ../..;
@@ -239,6 +247,7 @@
 		F19243D52103CF880056FD9B /* Default Elements */ = {
 			isa = PBXGroup;
 			children = (
+				F19243D32103C6540056FD9B /* MarkdownElement.swift */,
 				F19243D62103CFB30056FD9B /* BoldElement.swift */,
 				F19243E02103DBB00056FD9B /* ItalicElement.swift */,
 				F19243E42103E14A0056FD9B /* BulletElement.swift */,
@@ -373,7 +382,10 @@
 			files = (
 				DDCF8C11A1E9433A7B72AF900F86A986 /* Markdowner-dummy.m in Sources */,
 				F19243E52103E14A0056FD9B /* BulletElement.swift in Sources */,
+				F19243ED21041E100056FD9B /* MarkdownTextStorage.swift in Sources */,
 				F19243D42103C6540056FD9B /* MarkdownElement.swift in Sources */,
+				F19243EF2104213F0056FD9B /* MarkdownTextView.swift in Sources */,
+				F19243F121042E8D0056FD9B /* MarkdownParser.swift in Sources */,
 				F19243E92103E9ED0056FD9B /* HeaderElement.swift in Sources */,
 				F19243E12103DBB00056FD9B /* ItalicElement.swift in Sources */,
 				F19243D72103CFB30056FD9B /* BoldElement.swift in Sources */,

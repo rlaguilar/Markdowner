@@ -56,22 +56,62 @@ class ItalicElementTests: XCTestCase {
     func testRegex_WhenMultipleMatches_ReturnsAll() {
         let samples = [
             "*a_b*c_d_e*",
-            "*m * **",
-            "*o O match*_ n_",
-            "T *one _value_ __"
+            "*o O match*_nn_",
+            "T *one _value_ _a_"
         ]
         
         let expectedRanges: [[NSRange]] = [
             [.init(location: 0, length: 5), .init(location: 6, length: 3)],
-            [.init(location: 0, length: 4), .init(location: 5, length: 2)],
             [.init(location: 0, length: 11), .init(location: 11, length: 4)],
-            [.init(location: 7, length: 7), .init(location: 15, length: 2)]
+            [.init(location: 7, length: 7), .init(location: 15, length: 3)]
         ]
         
         zip(samples, expectedRanges).forEach { (markdown, ranges) in
             let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
             
             XCTAssertEqual(matches.map { $0.range }, ranges, "Invalid output for: \(markdown)")
+        }
+    }
+    
+    func testRegex_WhenSpaceBetweenIndicators_DoesNotMatch() {
+        let samples = ["* Hello*", "_ Hello_", "*Hello *", "_Hello _"]
+        
+        for markdown in samples {
+            let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
+            
+            XCTAssert(matches.isEmpty, "\(markdown): Should't match with space between the indicators and the content")
+        }
+    }
+    
+    func testRegex_WhenEmptyContent_DoesNotMatch() {
+        let samples = ["**", "__"]
+        
+        for markdown in samples {
+            let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
+            
+            XCTAssert(matches.isEmpty, "Shouldn't match empty values")
+        }
+    }
+    
+    func testRegex_ConsecutiveSymbols_DoNotMatch() {
+        let samples = ["**hello*", "*hello**", "__hello_", "_hello__"]
+        
+        for markdown in samples {
+            let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
+            
+            XCTAssert(matches.isEmpty, "\(markdown): Shouldn't match with more that once symbol")
+        }
+    }
+    
+    func testRegex_IfMatchContainsConsecutiveElements_ReturnsIt() {
+        let samples = ["*a**b*", "_a__b_", "*a__b*", "_a**b_"]
+        
+        for markdown in samples {
+            let expectedRanges = [markdown.range]
+            let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
+            let matchedRanges = matches.map { $0.range }
+            
+            XCTAssertEqual(matchedRanges, expectedRanges, "Invalid output")
         }
     }
     

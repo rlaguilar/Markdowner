@@ -47,13 +47,13 @@ class BoldElementTests: XCTestCase {
     
     func testRegex_WhenMultipleMatches_ReturnsAll() {
         let samples = [
-            "**m ** ****",
+            "**m ** ** **",
             "**o O * match** n*",
             "This time **one value ** here ** here"
         ]
         
         let expectedRanges: [[NSRange]] = [
-            [.init(location: 0, length: 6), .init(location: 7, length: 4)],
+            [.init(location: 0, length: 6), .init(location: 7, length: 5)],
             [.init(location: 0, length: 15)],
             [.init(location: 10, length: 14)]
         ]
@@ -63,6 +63,14 @@ class BoldElementTests: XCTestCase {
             
             XCTAssertEqual(matches.map { $0.range }, ranges, "Invalid output for: \(markdown)")
         }
+    }
+    
+    func testRegex_WhenEmptyContent_DoesNotMatch() {
+        let markdown = "****"
+        
+        let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
+        
+        XCTAssert(matches.isEmpty, "Shouldn't match empty values")
     }
     
     // MARK: - Styles tests
