@@ -11,11 +11,15 @@
 		56078227139C1D2BCD562F4251E04E6E /* Pods-Markdowner_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 998C7EB58B5E5AD09E77A5A9DE742305 /* Pods-Markdowner_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5A7A13472F7C04D19451FEE7E5B994BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		6170BE13654EEA241DBF152B5C297D3A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		92EBFD8CE1C13759F6DDBE955E115EF8 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3161B548B3AD9E2AEE607076BBBD82 /* ReplaceMe.swift */; };
 		9F3EC75ED56785E85D36CF4F1A39B4BD /* Pods-Markdowner_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2249CBD55DFA549D2C3383421181FC6C /* Pods-Markdowner_Tests-dummy.m */; };
 		D8D270C48A2545DA86B49B7AE0642914 /* Markdowner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FBABFFB2237419C5B0B7D28D72656C6C /* Markdowner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDCF8C11A1E9433A7B72AF900F86A986 /* Markdowner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6871DA0CC9EC6CA6468907D1C9E348BD /* Markdowner-dummy.m */; };
 		EC63D387E4FA48A6397614A2E9A7B919 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		F19243D42103C6540056FD9B /* MarkdownElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243D32103C6540056FD9B /* MarkdownElement.swift */; };
+		F19243D72103CFB30056FD9B /* BoldElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243D62103CFB30056FD9B /* BoldElement.swift */; };
+		F19243E12103DBB00056FD9B /* ItalicElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243E02103DBB00056FD9B /* ItalicElement.swift */; };
+		F19243E52103E14A0056FD9B /* BulletElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243E42103E14A0056FD9B /* BulletElement.swift */; };
+		F19243E92103E9ED0056FD9B /* HeaderElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243E82103E9ED0056FD9B /* HeaderElement.swift */; };
 		FF108AE8D6AD0A1F35E5A7C2A89C0FAD /* Pods-Markdowner_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CB85788DCDF500BF412D5FC427CC8452 /* Pods-Markdowner_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -39,7 +43,6 @@
 /* Begin PBXFileReference section */
 		05906A4618A65E3F67EE6C3C17083A94 /* Pods_Markdowner_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Markdowner_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16B7F5E18B4AC7F1C2C87251328220EA /* Pods-Markdowner_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Markdowner_Tests.modulemap"; sourceTree = "<group>"; };
-		1C3161B548B3AD9E2AEE607076BBBD82 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = Markdowner/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		1E9EBC636BD4F1DAB95EC500C87A9BD5 /* Markdowner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Markdowner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2249CBD55DFA549D2C3383421181FC6C /* Pods-Markdowner_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Markdowner_Tests-dummy.m"; sourceTree = "<group>"; };
 		27837A154F602C6BDCE50611C6F463FE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,6 +73,11 @@
 		DE3D2755BC1EEF23B21FF8B80C311D70 /* Markdowner.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = Markdowner.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E31E9620F315013E3B55B1B0E8AD6128 /* Pods-Markdowner_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Markdowner_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		EA7BF899B4E91BFCD99F65BE7CEF844C /* Pods-Markdowner_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Markdowner_Example.release.xcconfig"; sourceTree = "<group>"; };
+		F19243D32103C6540056FD9B /* MarkdownElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownElement.swift; sourceTree = "<group>"; };
+		F19243D62103CFB30056FD9B /* BoldElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldElement.swift; sourceTree = "<group>"; };
+		F19243E02103DBB00056FD9B /* ItalicElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItalicElement.swift; sourceTree = "<group>"; };
+		F19243E42103E14A0056FD9B /* BulletElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletElement.swift; sourceTree = "<group>"; };
+		F19243E82103E9ED0056FD9B /* HeaderElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderElement.swift; sourceTree = "<group>"; };
 		F6DC76B5B139EF6AF5B41521E49DE1BF /* Markdowner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Markdowner.modulemap; sourceTree = "<group>"; };
 		FBABFFB2237419C5B0B7D28D72656C6C /* Markdowner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Markdowner-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -195,7 +203,8 @@
 		C4323E0AD72441798542024DFF5243E8 /* Markdowner */ = {
 			isa = PBXGroup;
 			children = (
-				1C3161B548B3AD9E2AEE607076BBBD82 /* ReplaceMe.swift */,
+				F19243D52103CF880056FD9B /* Default Elements */,
+				F19243D32103C6540056FD9B /* MarkdownElement.swift */,
 				F0EFFD777410BC7E7BE19232FAB31378 /* Pod */,
 				C698D2D832F1609438AE8FC55C7B1E77 /* Support Files */,
 			);
@@ -225,6 +234,17 @@
 				BA36D7991628FAA88AB7212067416978 /* README.md */,
 			);
 			name = Pod;
+			sourceTree = "<group>";
+		};
+		F19243D52103CF880056FD9B /* Default Elements */ = {
+			isa = PBXGroup;
+			children = (
+				F19243D62103CFB30056FD9B /* BoldElement.swift */,
+				F19243E02103DBB00056FD9B /* ItalicElement.swift */,
+				F19243E42103E14A0056FD9B /* BulletElement.swift */,
+				F19243E82103E9ED0056FD9B /* HeaderElement.swift */,
+			);
+			path = "Default Elements";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,7 +372,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDCF8C11A1E9433A7B72AF900F86A986 /* Markdowner-dummy.m in Sources */,
-				92EBFD8CE1C13759F6DDBE955E115EF8 /* ReplaceMe.swift in Sources */,
+				F19243E52103E14A0056FD9B /* BulletElement.swift in Sources */,
+				F19243D42103C6540056FD9B /* MarkdownElement.swift in Sources */,
+				F19243E92103E9ED0056FD9B /* HeaderElement.swift in Sources */,
+				F19243E12103DBB00056FD9B /* ItalicElement.swift in Sources */,
+				F19243D72103CFB30056FD9B /* BoldElement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,49 @@
+//
+//  MarkdownElement.swift
+//  Markdowner
+//
+//  Created by Reynaldo Aguilar on 7/21/18.
+//
+
+import Foundation
+
+public class MarkdownElement {
+    static let defaultFontSize: CGFloat = 14
+    
+    internal let regex: NSRegularExpression
+    
+    public init(regex: NSRegularExpression) {
+        self.regex = regex
+    }
+    
+    open func styles(forMatch match: String) -> [Style] {
+        return []
+    }
+    
+    public struct Style {
+        let attributeKey: NSAttributedStringKey
+        let value: Any
+        let startIndex: Int
+        let length: Int
+    }
+}
+
+public class SimpleMarkdownElement: MarkdownElement {
+    private let attrs: [NSAttributedStringKey: Any]
+    
+    public init(regex: NSRegularExpression, attrs: [NSAttributedStringKey: Any]) {
+        self.attrs = attrs
+        super.init(regex: regex)
+    }
+    
+    open override func styles(forMatch match: String) -> [MarkdownElement.Style] {
+        return attrs.map { (key, value)  in
+            Style(
+                attributeKey: key,
+                value: value,
+                startIndex: 0,
+                length: match.count
+            )
+        }
+    }
+}
