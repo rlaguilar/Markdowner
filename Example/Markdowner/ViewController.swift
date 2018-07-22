@@ -18,6 +18,15 @@ class ViewController: UIViewController {
         let textView = MarkdownTextView(frame: wrapperView.bounds)
         wrapperView.addSubview(textView)
         textView.frame = wrapperView.bounds
+        textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        textView.keyboardDismissMode = .onDrag
+        
+        guard let contentURL = Bundle.main.url(forResource: "sample", withExtension: "md") else {
+            fatalError()
+        }
+        
+        let content = try! String(contentsOf: contentURL)
+        textView.text = content
     }
 
     override func didReceiveMemoryWarning() {
