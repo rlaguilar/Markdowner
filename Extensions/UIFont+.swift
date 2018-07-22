@@ -14,9 +14,22 @@ extension UIFont {
             return UIFont(descriptor: newFontDescriptor, size: pointSize)
         }
         else {
-            print("WARNING: Unable to resolve descriptor \(traits) for font: \(fontName)")
-            print("Will use current font instead")
+            NSLog("WARNING: Unable to resolve descriptor \(traits) for font: \(fontName)")
+            NSLog("Will use current font instead")
             return self
+        }
+    }
+
+    open func dynamic(withSize size: CGFloat = 0, forTextStyle textStyle: UIFontTextStyle = .body) -> UIFont {
+        let defaultSize = size == 0 ? pointSize : size
+        let newFont = withSize(defaultSize)
+        
+        if #available(iOS 11.0, *) {
+            let metrics = UIFontMetrics(forTextStyle: textStyle)
+            return metrics.scaledFont(for: newFont)
+        } else {
+            NSLog("Markdowner WARNING: iOS 11 not available. Won't compute dynamic font")
+            return newFont
         }
     }
 }

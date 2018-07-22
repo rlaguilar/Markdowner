@@ -8,7 +8,13 @@
 import Foundation
 
 public class MarkdownTextView: UITextView {
-    private let storage: MarkdownTextStorage
+    
+    public var stylesConfiguration: StylesConfiguration {
+        get { return markdownStorage.stylesConfiguration }
+        set { markdownStorage.stylesConfiguration = newValue }
+    }
+    
+    private let markdownStorage: MarkdownTextStorage
     
     public init(frame: CGRect) {
         let storage = MarkdownTextStorage()
@@ -16,7 +22,7 @@ public class MarkdownTextView: UITextView {
         storage.addLayoutManager(layoutManager)
         let textContainer = NSTextContainer()
         layoutManager.addTextContainer(textContainer)
-        self.storage = storage
+        self.markdownStorage = storage
         super.init(frame: frame, textContainer: textContainer)
     }
     

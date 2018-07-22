@@ -8,8 +8,6 @@
 import Foundation
 
 public class MarkdownElement {
-    static let defaultFontSize: CGFloat = 14
-    
     internal let regex: NSRegularExpression
     
     public init(regex: NSRegularExpression) {
@@ -18,6 +16,10 @@ public class MarkdownElement {
     
     open func styles(forMatch match: String) -> [Style] {
         return []
+    }
+    
+    open func applying(stylesConfiguration: StylesConfiguration) -> Self {
+        return self
     }
     
     public struct Style {

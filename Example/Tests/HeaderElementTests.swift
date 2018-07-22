@@ -10,7 +10,12 @@ import XCTest
 @testable import Markdowner
 
 class HeaderElementTests: XCTestCase {
-    let element = HeaderElement()
+    let fontProvider = MockHeaderElementFontProvider()
+    
+    lazy var element = HeaderElement(
+        symbolsColor: .red,
+        fontProvider: fontProvider
+    )
     
     // MARK: - Regex tests
     func testRegex_WhenMatchFullRange_ReturnsIt() {
@@ -97,8 +102,7 @@ class HeaderElementTests: XCTestCase {
             let fontStyle = element.styles(forMatch: markdown).first { $0.attributeKey == .font }
             
             let font = fontStyle?.value as? UIFont
-            XCTAssertNotNil(font, "Unable to retrieve font from style")
-            XCTAssertEqual(font?.pointSize, level.fontSize, "Font size doesn't match")
+            XCTAssertEqual(font, fontProvider.font(forLevel: level), "Fonts don't match")
         }
     }
     

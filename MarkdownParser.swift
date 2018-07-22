@@ -8,7 +8,7 @@
 import Foundation
 
 struct MarkdownParser {
-    private let markdownElements: [MarkdownElement]
+    let markdownElements: [MarkdownElement]
     
     init(markdownElements: [MarkdownElement]) {
         self.markdownElements = markdownElements

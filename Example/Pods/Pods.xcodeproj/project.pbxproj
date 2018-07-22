@@ -25,6 +25,7 @@
 		F19243F121042E8D0056FD9B /* MarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243F021042E8D0056FD9B /* MarkdownParser.swift */; };
 		F19243F621050C190056FD9B /* NSAttributedStringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243F521050C190056FD9B /* NSAttributedStringKey+.swift */; };
 		F19243F821050E160056FD9B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243F721050E160056FD9B /* UIFont+.swift */; };
+		F1924401210521E80056FD9B /* StyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1924400210521E80056FD9B /* StyleConfiguration.swift */; };
 		FF108AE8D6AD0A1F35E5A7C2A89C0FAD /* Pods-Markdowner_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CB85788DCDF500BF412D5FC427CC8452 /* Pods-Markdowner_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		F19243F021042E8D0056FD9B /* MarkdownParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownParser.swift; sourceTree = "<group>"; };
 		F19243F521050C190056FD9B /* NSAttributedStringKey+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedStringKey+.swift"; sourceTree = "<group>"; };
 		F19243F721050E160056FD9B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		F1924400210521E80056FD9B /* StyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleConfiguration.swift; sourceTree = "<group>"; };
 		F6DC76B5B139EF6AF5B41521E49DE1BF /* Markdowner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Markdowner.modulemap; sourceTree = "<group>"; };
 		FBABFFB2237419C5B0B7D28D72656C6C /* Markdowner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Markdowner-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -213,6 +215,7 @@
 		C4323E0AD72441798542024DFF5243E8 /* Markdowner */ = {
 			isa = PBXGroup;
 			children = (
+				F19243FF210521A80056FD9B /* Models */,
 				F19243F421050C070056FD9B /* Extensions */,
 				F19243D52103CF880056FD9B /* Default Elements */,
 				F0EFFD777410BC7E7BE19232FAB31378 /* Pod */,
@@ -268,6 +271,14 @@
 				F19243F721050E160056FD9B /* UIFont+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F19243FF210521A80056FD9B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1924400210521E80056FD9B /* StyleConfiguration.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,6 +405,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1924401210521E80056FD9B /* StyleConfiguration.swift in Sources */,
 				F19243F821050E160056FD9B /* UIFont+.swift in Sources */,
 				DDCF8C11A1E9433A7B72AF900F86A986 /* Markdowner-dummy.m in Sources */,
 				F19243E52103E14A0056FD9B /* BulletElement.swift in Sources */,

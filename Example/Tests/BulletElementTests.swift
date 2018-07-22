@@ -10,7 +10,7 @@ import XCTest
 @testable import Markdowner
 
 class BulletElementTests: XCTestCase {
-    let element = BulletElement()
+    let element = BulletElement(symbolsColor: .red)
     
     // MARK: Regex tests
     func testRegex_WhenMatchFullRange_ReturnsIt() {

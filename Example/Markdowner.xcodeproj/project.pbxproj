@@ -24,6 +24,7 @@
 		F19243FA210518FC0056FD9B /* sample.md in Resources */ = {isa = PBXBuildFile; fileRef = F19243F9210517900056FD9B /* sample.md */; };
 		F19243FC2105197D0056FD9B /* MarkdownTextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243FB2105197D0056FD9B /* MarkdownTextViewTests.swift */; };
 		F19243FE21051A130056FD9B /* big-file.md in Resources */ = {isa = PBXBuildFile; fileRef = F19243FD21051A130056FD9B /* big-file.md */; };
+		F192440421052FB80056FD9B /* HeaderElementFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192440321052FB80056FD9B /* HeaderElementFontProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		F19243F9210517900056FD9B /* sample.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = sample.md; sourceTree = "<group>"; };
 		F19243FB2105197D0056FD9B /* MarkdownTextViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTextViewTests.swift; sourceTree = "<group>"; };
 		F19243FD21051A130056FD9B /* big-file.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "big-file.md"; sourceTree = "<group>"; };
+		F192440321052FB80056FD9B /* HeaderElementFontProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderElementFontProvider.swift; sourceTree = "<group>"; };
 		F4BE00D1B6CBE61A8449F158 /* Pods-Markdowner_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Markdowner_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Markdowner_Tests/Pods-Markdowner_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +145,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				F192440221052FA60056FD9B /* Models */,
 				F19243DD2103D3290056FD9B /* Extensions */,
 				F19243D92103D0FE0056FD9B /* Default Elements */,
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
@@ -200,6 +203,14 @@
 				F19243DE2103D33A0056FD9B /* String+.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		F192440221052FA60056FD9B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F192440321052FB80056FD9B /* HeaderElementFontProvider.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,6 +394,7 @@
 				F19243F32104FA880056FD9B /* MarkdownParserTests.swift in Sources */,
 				F19243EB2103EE570056FD9B /* HeaderElementTests.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				F192440421052FB80056FD9B /* HeaderElementFontProvider.swift in Sources */,
 				F19243DF2103D33A0056FD9B /* String+.swift in Sources */,
 				F19243E32103DCDB0056FD9B /* ItalicElementTests.swift in Sources */,
 				F19243DC2103D1500056FD9B /* BoldElementTests.swift in Sources */,

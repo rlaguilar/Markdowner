@@ -8,9 +8,13 @@
 import Foundation
 
 public class HeaderElement: MarkdownElement {
-    var foregroundColor = UIColor.red
+    let symbolsColor: UIColor
+    let fontProvider: HeaderElementFontProvider
     
-    init() {
+    public init(symbolsColor: UIColor, fontProvider: HeaderElementFontProvider) {
+        self.symbolsColor = symbolsColor
+        self.fontProvider = fontProvider
+        
         guard let regex = try? NSRegularExpression(pattern: "^(#{1,6}) .+", options: .anchorsMatchLines) else {
             fatalError()
         }
@@ -34,26 +38,56 @@ public class HeaderElement: MarkdownElement {
         
         let fontStyle = Style(
             attributeKey: .font,
-            value: UIFont.boldSystemFont(ofSize: level.fontSize),
+            value: fontProvider.font(forLevel: level),
             startIndex: 0,
             length: match.count
         )
         
-        let foregroundStyle = Style(
+        let indicatorForegroundStyle = Style(
             attributeKey: .foregroundColor,
-            value: foregroundColor,
+            value: symbolsColor,
             startIndex: 0,
             length: hashtagCount
         )
         
-        return [fontStyle, foregroundStyle]
+        return [fontStyle, indicatorForegroundStyle]
     }
     
-    enum Level: Int {
+    public override func applying(stylesConfiguration: StylesConfiguration) -> HeaderElement {
+        let newFontProvider = fontProvider.applying(stylesConfiguration: stylesConfiguration)
+        return HeaderElement(
+            symbolsColor: stylesConfiguration.symbolsColor,
+            fontProvider: newFontProvider
+        )
+    }
+    
+    public enum Level: Int {
         case h1 = 1, h2, h3, h4, h5, h6
         
-        var fontSize: CGFloat {
-            return HeaderElement.defaultFontSize + 7 - CGFloat(self.rawValue)
-        }
+        static let maxLevel = Level.h6
+    }
+}
+
+public protocol HeaderElementFontProvider {
+    func font(forLevel level: HeaderElement.Level) -> UIFont
+    
+    func applying(stylesConfiguration: StylesConfiguration) -> Self
+}
+
+final class DefaultHeaderElementFontProvider: HeaderElementFontProvider {
+    let font: UIFont
+    
+    public init(font: UIFont) {
+        self.font = font.adding(traits: .traitBold)
+    }
+    
+    public func font(forLevel level: HeaderElement.Level) -> UIFont {
+        let extraSize = CGFloat(HeaderElement.Level.maxLevel.rawValue - level.rawValue)
+        let newFont = self.font.withSize(self.font.pointSize + extraSize)
+        return newFont.dynamic()
+    }
+    
+    public func applying(stylesConfiguration: StylesConfiguration) -> DefaultHeaderElementFontProvider {
+        return DefaultHeaderElementFontProvider(font: stylesConfiguration.baseFont)
     }
 }

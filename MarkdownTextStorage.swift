@@ -8,20 +8,59 @@
 import Foundation
 
 public class MarkdownTextStorage: NSTextStorage {
+    var stylesConfiguration: StylesConfiguration {
+        didSet {
+            self.refreshContent()
+        }
+    }
+    
+    private var markdownParser: MarkdownParser
+    
     private let backingString = NSMutableAttributedString()
     
-    private lazy var markdownParser: MarkdownParser = {
-        let elements = [ItalicElement(), BoldElement(), BulletElement(), HeaderElement()]
-        let parser = MarkdownParser(markdownElements: elements)
-        return parser
-    }()
-    
-    private let defaultAttributes: [NSAttributedStringKey: Any] = {
+    private var defaultAttributes: [NSAttributedStringKey: Any] {
         return [
-            .font: UIFont.systemFont(ofSize: MarkdownElement.defaultFontSize),
-            .foregroundColor: UIColor.black
+            .font: stylesConfiguration.baseFont,
+            .foregroundColor: stylesConfiguration.textColor
         ]
-    }()
+    }
+    
+    private var defaultElements: [MarkdownElement] {
+        let boldElement = BoldElement()
+        let italicElement = ItalicElement()
+        let bulletElement = BulletElement(symbolsColor: stylesConfiguration.symbolsColor)
+        let headerElement = HeaderElement(
+            symbolsColor: stylesConfiguration.symbolsColor,
+            fontProvider: DefaultHeaderElementFontProvider(font: stylesConfiguration.baseFont)
+        )
+
+        return [boldElement, italicElement, bulletElement, headerElement]
+    }
+    
+    public override init() {
+        self.stylesConfiguration = StylesConfiguration(
+            baseFont: UIFont.systemFont(ofSize: 14),
+            textColor: .black,
+            symbolsColor: .blue
+        )
+        
+        markdownParser = MarkdownParser(markdownElements: [])
+
+        super.init()
+        
+        self.use(elements: defaultElements)
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func use(elements: [MarkdownElement]) {
+        self.markdownParser = MarkdownParser(markdownElements: elements)
+        self.refreshContent()
+    }
+    
+    // MARK: NSTextStorage subclass
     
     override public var string: String {
         return backingString.string
@@ -70,5 +109,16 @@ public class MarkdownTextStorage: NSTextStorage {
         }
         
         super.processEditing()
+    }
+    
+    private func refreshContent() {
+        let newMarkdowElements = markdownParser.markdownElements
+            .map { $0.applying(stylesConfiguration: stylesConfiguration) }
+        
+        markdownParser = MarkdownParser(markdownElements: newMarkdowElements)
+        
+        let fullRange = NSRange(location: 0, length: string.count)
+        
+        self.edited(.editedAttributes, range: fullRange, changeInLength: 0)
     }
 }

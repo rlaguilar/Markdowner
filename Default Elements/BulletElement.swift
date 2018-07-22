@@ -8,9 +8,11 @@
 import Foundation
 
 public class BulletElement: MarkdownElement {
-    var indicatorColor: UIColor = .red
+    let symbolsColor: UIColor
     
-    public init() {
+    public init(symbolsColor: UIColor) {
+        self.symbolsColor = symbolsColor
+        
         let pattern = "^[-|*] .+"
         
         guard let regex = try? NSRegularExpression(pattern: pattern, options: .anchorsMatchLines) else {
@@ -23,11 +25,15 @@ public class BulletElement: MarkdownElement {
     public override func styles(forMatch match: String) -> [MarkdownElement.Style] {
         let indicatorColorStyle = Style.init(
             attributeKey: .foregroundColor,
-            value: indicatorColor,
+            value: symbolsColor,
             startIndex: 0,
             length: 1
         )
         
         return [indicatorColorStyle]
+    }
+    
+    public override func applying(stylesConfiguration: StylesConfiguration) -> BulletElement {
+        return BulletElement(symbolsColor: stylesConfiguration.symbolsColor)
     }
 }
