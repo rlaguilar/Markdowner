@@ -49,11 +49,24 @@ public class MarkdownTextStorage: NSTextStorage {
         self.setAttributes(defaultAttributes, range: paragraphRange)
         
         for style in styles {
-            self.addAttribute(
-                style.attributeKey,
-                value: style.value,
-                range: NSRange(location: style.startIndex, length: style.length)
-            )
+            if style.attributeKey == .fontTraits {
+                guard let fontTraits = style.value as? UIFontDescriptorSymbolicTraits else {
+                    fatalError("Attribute `fontTraints` should have a value of type `UIFontDescriptorSymbolicTraits`")
+                }
+                
+                let currentAttrs = self.attributes(at: style.startIndex, effectiveRange: nil)
+                
+                guard let currentFont = currentAttrs[.font] as? UIFont else {
+                    fatalError("Unable to retrieve font for position \(style.startIndex)")
+                }
+                
+                let newFont = currentFont.adding(traits: fontTraits)
+                
+                self.addAttribute(.font, value: newFont, range: style.range)
+            }
+            else {
+                self.addAttribute(style.attributeKey, value: style.value, range: style.range)
+            }
         }
         
         super.processEditing()

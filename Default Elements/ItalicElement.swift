@@ -19,7 +19,7 @@ public class ItalicElement: SimpleMarkdownElement {
         
         super.init(
             regex: regex,
-            attrs: [.font: UIFont.italicSystemFont(ofSize: ItalicElement.defaultFontSize)]
+            attrs: [.fontTraits: UIFontDescriptorSymbolicTraits.traitItalic]
         )
     }
 }

@@ -9,13 +9,14 @@ import Foundation
 
 public class BoldElement: SimpleMarkdownElement {
     public init() {
-        guard let regex = try? NSRegularExpression(pattern: "\\*\\*.+?\\*\\*", options: []) else {
+        let pattern = "(?<!\\*)\\*\\*(?![ \\*]).*?(?<![ \\*])\\*\\*(?!\\*)"
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else {
             fatalError()
         }
-        
+    
         super.init(
             regex: regex,
-            attrs: [.font: UIFont.boldSystemFont(ofSize: BoldElement.defaultFontSize)]
+            attrs: [.fontTraits: UIFontDescriptorSymbolicTraits.traitBold]
         )
     }
 }

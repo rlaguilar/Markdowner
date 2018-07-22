@@ -47,9 +47,9 @@ class BoldElementTests: XCTestCase {
     
     func testRegex_WhenMultipleMatches_ReturnsAll() {
         let samples = [
-            "**m ** ** **",
+            "**mm** **a**",
             "**o O * match** n*",
-            "This time **one value ** here ** here"
+            "This time **one vale s** here ** here"
         ]
         
         let expectedRanges: [[NSRange]] = [
@@ -65,12 +65,46 @@ class BoldElementTests: XCTestCase {
         }
     }
     
+    func testRegex_WhenSpaceBetweenIndicators_DoesNotMatch() {
+        let samples = ["**Hello **", "** Hello**"]
+        
+        for markdown in samples {
+            let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
+            
+            XCTAssert(matches.isEmpty, "\(markdown): Shouldn't match with space between the indicators and the content")
+        }
+    }
+    
     func testRegex_WhenEmptyContent_DoesNotMatch() {
         let markdown = "****"
         
         let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
         
         XCTAssert(matches.isEmpty, "Shouldn't match empty values")
+    }
+    
+    func testRegex_WhenConsecutiveSymbols_DoNotMatch() {
+        let samples = ["***hello**", "**hello***"]
+        
+        for markdown in samples {
+            let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
+            
+            XCTAssert(matches.isEmpty, "\(markdown): Shouldn't match with more than 2 symbols")
+        }
+    }
+    
+    func testRegex_IfMatchContainsNonValidBoundaries_ReturnsIt() {
+        let samples = ["**a*b**", "**a***b**"]
+        
+        for markdown in samples {
+            let expectedRanges = [markdown.range]
+            
+            let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
+            let matchedRanges = matches.map { $0.range }
+            
+            XCTAssertEqual(matchedRanges, expectedRanges, "Should't match the whole string")
+            
+        }
     }
     
     // MARK: - Styles tests
@@ -84,12 +118,12 @@ class BoldElementTests: XCTestCase {
         XCTAssertEqual(ranges, expectedRanges, "All the styles should be applied to the full range")
     }
     
-    func testStyles_WhenCalled_ReturnsCustomFont() {
+    func testStyles_WhenCalled_ReturnsBoldTrait() {
         let markdown = "**Hello**"
         
-        let fontStyle = element.styles(forMatch: markdown).first { $0.attributeKey == .font }
+        let fontTraits = element.styles(forMatch: markdown).first { $0.attributeKey == .fontTraits }
         
-        XCTAssertNotNil(fontStyle, "There should be a custom font")
-        XCTAssertNotNil(fontStyle?.value as? UIFont, "Value for font key should be a font object")
+        XCTAssertNotNil(fontTraits, "There should be a custom font trait")
+        XCTAssertEqual(fontTraits?.value as? UIFontDescriptorSymbolicTraits, .traitBold)
     }
 }

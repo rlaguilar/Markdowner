@@ -34,6 +34,6 @@ struct MarkdownParser {
             }
         }
         
-        return styles
+        return styles.sorted(by: { $0.startIndex < $1.startIndex })
     }
 }

@@ -23,6 +23,8 @@
 		F19243ED21041E100056FD9B /* MarkdownTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243EC21041E100056FD9B /* MarkdownTextStorage.swift */; };
 		F19243EF2104213F0056FD9B /* MarkdownTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243EE2104213F0056FD9B /* MarkdownTextView.swift */; };
 		F19243F121042E8D0056FD9B /* MarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243F021042E8D0056FD9B /* MarkdownParser.swift */; };
+		F19243F621050C190056FD9B /* NSAttributedStringKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243F521050C190056FD9B /* NSAttributedStringKey+.swift */; };
+		F19243F821050E160056FD9B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243F721050E160056FD9B /* UIFont+.swift */; };
 		FF108AE8D6AD0A1F35E5A7C2A89C0FAD /* Pods-Markdowner_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CB85788DCDF500BF412D5FC427CC8452 /* Pods-Markdowner_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -84,6 +86,8 @@
 		F19243EC21041E100056FD9B /* MarkdownTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTextStorage.swift; sourceTree = "<group>"; };
 		F19243EE2104213F0056FD9B /* MarkdownTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTextView.swift; sourceTree = "<group>"; };
 		F19243F021042E8D0056FD9B /* MarkdownParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownParser.swift; sourceTree = "<group>"; };
+		F19243F521050C190056FD9B /* NSAttributedStringKey+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedStringKey+.swift"; sourceTree = "<group>"; };
+		F19243F721050E160056FD9B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		F6DC76B5B139EF6AF5B41521E49DE1BF /* Markdowner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Markdowner.modulemap; sourceTree = "<group>"; };
 		FBABFFB2237419C5B0B7D28D72656C6C /* Markdowner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Markdowner-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -209,6 +213,7 @@
 		C4323E0AD72441798542024DFF5243E8 /* Markdowner */ = {
 			isa = PBXGroup;
 			children = (
+				F19243F421050C070056FD9B /* Extensions */,
 				F19243D52103CF880056FD9B /* Default Elements */,
 				F0EFFD777410BC7E7BE19232FAB31378 /* Pod */,
 				C698D2D832F1609438AE8FC55C7B1E77 /* Support Files */,
@@ -254,6 +259,15 @@
 				F19243E82103E9ED0056FD9B /* HeaderElement.swift */,
 			);
 			path = "Default Elements";
+			sourceTree = "<group>";
+		};
+		F19243F421050C070056FD9B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F19243F521050C190056FD9B /* NSAttributedStringKey+.swift */,
+				F19243F721050E160056FD9B /* UIFont+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,9 +394,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F19243F821050E160056FD9B /* UIFont+.swift in Sources */,
 				DDCF8C11A1E9433A7B72AF900F86A986 /* Markdowner-dummy.m in Sources */,
 				F19243E52103E14A0056FD9B /* BulletElement.swift in Sources */,
 				F19243ED21041E100056FD9B /* MarkdownTextStorage.swift in Sources */,
+				F19243F621050C190056FD9B /* NSAttributedStringKey+.swift in Sources */,
 				F19243D42103C6540056FD9B /* MarkdownElement.swift in Sources */,
 				F19243EF2104213F0056FD9B /* MarkdownTextView.swift in Sources */,
 				F19243F121042E8D0056FD9B /* MarkdownParser.swift in Sources */,

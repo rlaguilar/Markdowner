@@ -116,14 +116,13 @@ class ItalicElementTests: XCTestCase {
     }
     
     // MARK: - Styles tests
-    func testStyles_WhenCalled_ReturnsCustomFont() {
+    func testStyles_WhenCalled_ReturnsItalicFontTrait() {
         let markdown = "*Hello*"
         
-        let fontStyle = element.styles(forMatch: markdown).first { $0.attributeKey == .font }
+        let fontTraits = element.styles(forMatch: markdown).first { $0.attributeKey == .fontTraits }
         
-        XCTAssertNotNil(fontStyle, "There should be a custom font")
-        XCTAssertNotNil(fontStyle?.value as? UIFont, "Value for font key should be a font object")
-        let styleRange = fontStyle.flatMap { NSRange(location: $0.startIndex, length: $0.length) }
-        XCTAssertEqual(styleRange, markdown.range, "The font should be applied to all the string")
+        XCTAssertNotNil(fontTraits, "There should be a custom font")
+        XCTAssertEqual(fontTraits?.value as? UIFontDescriptorSymbolicTraits, .traitItalic)
+        XCTAssertEqual(fontTraits?.range, markdown.range, "The traits should be applied the whole string")
     }
 }
