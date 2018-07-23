@@ -85,4 +85,48 @@ class BulletElementTests: XCTestCase {
             XCTAssertEqual(style?.length, 1, "Should apply the style only to the indicator")
         }
     }
+    
+    // MARK: - Replacement ranges
+    func testReplacementRanges_ReturnValidRanges() {
+        let markdown = "- Hello"
+        let expectedRanges = [
+            ReplacementRange(
+                range: NSRange(location: 0, length: 2),
+                replacementValue: NSAttributedString(
+                    string: "• ",
+                    attributes: [.foregroundColor: element.textColor, .font: element.font]
+                )
+            )
+        ]
+        
+        let replacementRanges = element.replacementRanges(forMatch: markdown)
+            .sorted(by: { $0.range.location < $1.range.location })
+        
+        XCTAssertEqual(replacementRanges, expectedRanges)
+    }
+    
+    // MARK: - Update from Style Configuration tests
+    func testApplyStylesConfiguration_UpdateSymbolsColor() {
+        let configurations = StylesConfiguration.mockConfigurations()
+        
+        let symbolsColors = configurations.map { element.applying(stylesConfiguration: $0).symbolsColor }
+        
+        XCTAssertEqual(symbolsColors, configurations.map { $0.symbolsColor })
+    }
+    
+    func testApplyStylesConfiguration_UpdateTextColor() {
+        let configurations = StylesConfiguration.mockConfigurations()
+        
+        let textColors = configurations.map { element.applying(stylesConfiguration: $0).textColor }
+        
+        XCTAssertEqual(textColors, configurations.map { $0.textColor })
+    }
+    
+    func testApplyStylesConfiguration_UpdateFont() {
+        let configurations = StylesConfiguration.mockConfigurations()
+        
+        let fonts = configurations.map { element.applying(stylesConfiguration: $0).font }
+        
+        XCTAssertEqual(fonts, configurations.map { $0.baseFont })
+    }
 }

@@ -86,7 +86,7 @@ class HeaderElementTests: XCTestCase {
     }
     
     // MARK: - Styles tests
-    func testStyles_WhenCalled_ReturnsCorrectFontSize() {
+    func testStyles_ReturnsCorrectFontSize() {
         let samples = [
             "# Hello",
             "## Hello",
@@ -106,7 +106,7 @@ class HeaderElementTests: XCTestCase {
         }
     }
     
-    func testStyles_WhenCalled_ReturnsCorrectForegroundColor() {
+    func testStyles_ReturnsCorrectForegroundColor() {
         let samples = [
             "# Hello",
             "## Hello",
@@ -127,5 +127,39 @@ class HeaderElementTests: XCTestCase {
 
             XCTAssertEqual(styleRange, expectedRange, "The style should  be applied only to the indicators ")
         }
+    }
+    
+    // MARK: - Replacement ranges
+    func testReplacementRanges_ReturnValidRanges() {
+        let markdown = "## Hello"
+        let expectedRanges = [
+            ReplacementRange(
+                range: NSRange(location: 0, length: 3),
+                replacementValue: NSAttributedString()
+            )
+        ]
+        
+        let replacementRanges = element.replacementRanges(forMatch: markdown)
+            .sorted(by: { $0.range.location < $1.range.location })
+        
+        XCTAssertEqual(replacementRanges, expectedRanges)
+    }
+    
+    // MARK: - Update from Style Configuration tests
+    func testApplyStylesConfiguration_UpdateSymbolsColor() {
+        let configurations = StylesConfiguration.mockConfigurations()
+        
+        let symbolsColors = configurations.map { element.applying(stylesConfiguration: $0).symbolsColor }
+        
+        XCTAssertEqual(symbolsColors, configurations.map { $0.symbolsColor })
+    }
+    
+    func testApplyStylesConfiguration_UpdateFontProvider() {
+        let configurations = StylesConfiguration.mockConfigurations()
+        let expectedProviders = configurations.map { fontProvider.applying(stylesConfiguration: $0) }
+        
+        let providers = configurations.map { element.applying(stylesConfiguration: $0).fontProvider }
+        
+        XCTAssertEqual(providers as? [MockHeaderElementFontProvider], expectedProviders)
     }
 }

@@ -38,22 +38,22 @@ public class MarkdownElement {
     }
 }
 
-public class SimpleMarkdownElement: MarkdownElement {
-    private let attrs: [NSAttributedStringKey: Any]
-    
-    public init(regex: NSRegularExpression, attrs: [NSAttributedStringKey: Any]) {
-        self.attrs = attrs
-        super.init(regex: regex)
-    }
-    
-    open override func styles(forMatch match: String) -> [MarkdownElement.Style] {
-        return attrs.map { (key, value)  in
-            Style(
-                attributeKey: key,
-                value: value,
-                startIndex: 0,
-                length: match.count
-            )
-        }
-    }
-}
+//public class SimpleMarkdownElement: MarkdownElement {
+//    private let attrs: [NSAttributedStringKey: Any]
+//    
+//    public init(regex: NSRegularExpression, attrs: [NSAttributedStringKey: Any]) {
+//        self.attrs = attrs
+//        super.init(regex: regex)
+//    }
+//    
+//    open override func styles(forMatch match: String) -> [MarkdownElement.Style] {
+//        return attrs.map { (key, value)  in
+//            Style(
+//                attributeKey: key,
+//                value: value,
+//                startIndex: 0,
+//                length: match.count
+//            )
+//        }
+//    }
+//}

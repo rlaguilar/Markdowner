@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ReplacementRange {
+public struct ReplacementRange: Equatable {
     let range: NSRange
     let replacementValue: NSAttributedString
 }

@@ -10,7 +10,7 @@ import XCTest
 @testable import Markdowner
 
 class BoldElementTests: XCTestCase {
-    var element = BoldElement()
+    var element = BoldElement(symbolsColor: .red)
     
     // MARK: - Regex tests
     func testRegex_WhenMathFullRange_ReturnsIt() {
@@ -108,22 +108,68 @@ class BoldElementTests: XCTestCase {
     }
     
     // MARK: - Styles tests
-    func testStyles_WhenCalled_ReturnValidRanges() {
-        let markdown = "**Cool markdown**"
-        
-        let styles = element.styles(forMatch: markdown)
-        let ranges = styles.map { s in NSRange(location: s.startIndex, length: s.length) }
-        
-        let expectedRanges = [NSRange](repeating: markdown.range, count: styles.count)
-        XCTAssertEqual(ranges, expectedRanges, "All the styles should be applied to the full range")
-    }
-    
-    func testStyles_WhenCalled_ReturnsBoldTrait() {
+    func testStyles_ReturnsBoldTrait() {
         let markdown = "**Hello**"
         
         let fontTraits = element.styles(forMatch: markdown).first { $0.attributeKey == .fontTraits }
         
-        XCTAssertNotNil(fontTraits, "There should be a custom font trait")
         XCTAssertEqual(fontTraits?.value as? UIFontDescriptorSymbolicTraits, .traitBold)
+        XCTAssertEqual(fontTraits?.range, markdown.range, "The traits should be applied the whole string")
+    }
+    
+    func testStyles_ReturnsIndicatorsColor() {
+        let markdown = "**Hello**"
+        let expectedColors = [element.symbolsColor, element.symbolsColor]
+        let expectedRanges = [
+            NSRange(location: 0, length: 2),
+            NSRange(location: markdown.count - 2, length: 2)
+        ]
+        
+        let styles = element.styles(forMatch: markdown)
+            .filter { $0.attributeKey == .foregroundColor }
+            .sorted(by: { $0.startIndex < $1.startIndex })
+        
+        XCTAssertEqual(styles.compactMap { $0.value as? UIColor }, expectedColors)
+        XCTAssertEqual(styles.map { $0.range }, expectedRanges)
+    }
+    
+    // MARK: - Replacement ranges
+    func testReplacementRanges_ReturnValidRanges() {
+        let markdown = "**Hello**"
+        let expectedRanges = [
+            ReplacementRange(
+                range: NSRange(location: 0, length: 2),
+                replacementValue: NSAttributedString()
+            ),
+            ReplacementRange(
+                range: NSRange(location: markdown.count - 2, length: 2),
+                replacementValue: NSAttributedString()
+            )
+        ]
+        
+        let replacementRanges = element.replacementRanges(forMatch: markdown)
+            .sorted(by: { $0.range.location < $1.range.location })
+        
+        XCTAssertEqual(replacementRanges, expectedRanges)
+    }
+    
+    // MARK: - Update from Style Configuration tests
+    func testApplyStylesConfiguration_UpdateSymbolsColor() {
+        let configurations = [
+            StylesConfiguration(
+                baseFont: UIFont.systemFont(ofSize: 10),
+                textColor: .black,
+                symbolsColor: .red
+            ),
+            StylesConfiguration(
+                baseFont: UIFont.systemFont(ofSize: 10),
+                textColor: .black,
+                symbolsColor: .blue
+            )
+        ]
+        
+        let symbolsColors = configurations.map { element.applying(stylesConfiguration: $0).symbolsColor }
+        
+        XCTAssertEqual(symbolsColors, configurations.map { $0.symbolsColor })
     }
 }

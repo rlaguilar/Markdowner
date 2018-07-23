@@ -26,8 +26,8 @@ public class MarkdownTextStorage: NSTextStorage {
     }
     
     private var defaultElements: [MarkdownElement] {
-        let boldElement = BoldElement()
-        let italicElement = ItalicElement()
+        let boldElement = BoldElement(symbolsColor: stylesConfiguration.symbolsColor)
+        let italicElement = ItalicElement(symbolsColor: stylesConfiguration.symbolsColor)
         let bulletElement = BulletElement(
             symbolsColor: stylesConfiguration.symbolsColor,
             textColor: stylesConfiguration.textColor,
