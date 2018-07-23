@@ -13,9 +13,10 @@ public class ItalicElement: MarkdownElement {
     public init(symbolsColor: UIColor) {
         self.symbolsColor = symbolsColor
         
-        let asteriskPattern = "(?<!\\*)\\*(?![ \\*]).*?(?<![ \\*])\\*(?!\\*)"
-        let underscorePattern = "(?<!_)_(?![ _]).*?(?<![ _])_(?!_)"
-        let pattern = "\(asteriskPattern)|\(underscorePattern)"
+        let patterPlaceholder = "(?<!@)@(?![ @]).*?(?<![ @])@(?!@)"
+
+        let pattern = ["\\*", "_"].map { patterPlaceholder.replacingOccurrences(of: "@", with: $0) }
+            .joined(separator: "|")
         
         guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else {
             fatalError()

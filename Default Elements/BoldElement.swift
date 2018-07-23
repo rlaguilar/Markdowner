@@ -9,10 +9,11 @@ import Foundation
 
 public class BoldElement: MarkdownElement {
     let symbolsColor: UIColor
+    
     public init(symbolsColor: UIColor) {
         self.symbolsColor = symbolsColor
-        
         let pattern = "(?<!\\*)\\*\\*(?![ \\*]).*?(?<![ \\*])\\*\\*(?!\\*)"
+        
         guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else {
             fatalError()
         }
