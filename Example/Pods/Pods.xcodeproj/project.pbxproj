@@ -85,9 +85,9 @@
 		F19243E02103DBB00056FD9B /* ItalicElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItalicElement.swift; sourceTree = "<group>"; };
 		F19243E42103E14A0056FD9B /* BulletElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletElement.swift; sourceTree = "<group>"; };
 		F19243E82103E9ED0056FD9B /* HeaderElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderElement.swift; sourceTree = "<group>"; };
-		F19243EC21041E100056FD9B /* MarkdownTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTextStorage.swift; sourceTree = "<group>"; };
-		F19243EE2104213F0056FD9B /* MarkdownTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTextView.swift; sourceTree = "<group>"; };
-		F19243F021042E8D0056FD9B /* MarkdownParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownParser.swift; sourceTree = "<group>"; };
+		F19243EC21041E100056FD9B /* MarkdownTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MarkdownTextStorage.swift; path = Markdowner/Classes/MarkdownTextStorage.swift; sourceTree = "<group>"; };
+		F19243EE2104213F0056FD9B /* MarkdownTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MarkdownTextView.swift; path = Markdowner/Classes/MarkdownTextView.swift; sourceTree = "<group>"; };
+		F19243F021042E8D0056FD9B /* MarkdownParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MarkdownParser.swift; path = Markdowner/Classes/MarkdownParser.swift; sourceTree = "<group>"; };
 		F19243F521050C190056FD9B /* NSAttributedStringKey+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedStringKey+.swift"; sourceTree = "<group>"; };
 		F19243F721050E160056FD9B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		F1924400210521E80056FD9B /* StyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleConfiguration.swift; sourceTree = "<group>"; };
@@ -263,7 +263,8 @@
 				F19243E42103E14A0056FD9B /* BulletElement.swift */,
 				F19243E82103E9ED0056FD9B /* HeaderElement.swift */,
 			);
-			path = "Default Elements";
+			name = "Default Elements";
+			path = "Markdowner/Classes/Default Elements";
 			sourceTree = "<group>";
 		};
 		F19243F421050C070056FD9B /* Extensions */ = {
@@ -272,7 +273,8 @@
 				F19243F521050C190056FD9B /* NSAttributedStringKey+.swift */,
 				F19243F721050E160056FD9B /* UIFont+.swift */,
 			);
-			path = Extensions;
+			name = Extensions;
+			path = Markdowner/Classes/Extensions;
 			sourceTree = "<group>";
 		};
 		F19243FF210521A80056FD9B /* Models */ = {
@@ -281,7 +283,8 @@
 				F1924400210521E80056FD9B /* StyleConfiguration.swift */,
 				F1C1F7D521057E6F00C04639 /* ReplacementRange.swift */,
 			);
-			path = Models;
+			name = Models;
+			path = Markdowner/Classes/Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
