@@ -24,6 +24,12 @@ public class MarkdownTextView: UITextView {
         layoutManager.addTextContainer(textContainer)
         self.markdownStorage = storage
         super.init(frame: frame, textContainer: textContainer)
+        
+        if #available(iOS 10.0, *) {
+            adjustsFontForContentSizeCategory = true
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     public required init?(coder aDecoder: NSCoder) {
