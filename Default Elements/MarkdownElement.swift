@@ -8,7 +8,7 @@
 import Foundation
 
 public class MarkdownElement {
-    internal let regex: NSRegularExpression
+    public let regex: NSRegularExpression
     
     public init(regex: NSRegularExpression) {
         self.regex = regex
@@ -20,6 +20,10 @@ public class MarkdownElement {
     
     open func applying(stylesConfiguration: StylesConfiguration) -> Self {
         return self
+    }
+    
+    open func replacementRanges(forMatch match: String) -> [ReplacementRange] {
+        return []
     }
     
     public struct Style {

@@ -9,9 +9,13 @@ import Foundation
 
 public class BulletElement: MarkdownElement {
     let symbolsColor: UIColor
+    let textColor: UIColor
+    let font: UIFont
     
-    public init(symbolsColor: UIColor) {
+    public init(symbolsColor: UIColor, textColor: UIColor, font: UIFont) {
         self.symbolsColor = symbolsColor
+        self.textColor = textColor
+        self.font = font
         
         let pattern = "^[-|*] .+"
         
@@ -33,7 +37,21 @@ public class BulletElement: MarkdownElement {
         return [indicatorColorStyle]
     }
     
+    public override func replacementRanges(forMatch match: String) -> [ReplacementRange] {
+        let range = NSRange(location: 0, length: 2)
+        let replacementValue = NSAttributedString(
+            string: "• ",
+            attributes: [.foregroundColor: textColor, .font: font]
+        )
+        
+        return [ReplacementRange(range: range, replacementValue: replacementValue)]
+    }
+    
     public override func applying(stylesConfiguration: StylesConfiguration) -> BulletElement {
-        return BulletElement(symbolsColor: stylesConfiguration.symbolsColor)
+        return BulletElement(
+            symbolsColor: stylesConfiguration.symbolsColor,
+            textColor: stylesConfiguration.textColor,
+            font: stylesConfiguration.baseFont
+        )
     }
 }

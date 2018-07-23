@@ -23,18 +23,7 @@ public class HeaderElement: MarkdownElement {
     }
     
     public override func styles(forMatch match: String) -> [MarkdownElement.Style] {
-        let fullRange = NSRange(location: 0, length: match.count)
-        
-        guard let regexMatch = regex.matches(in: match, options: [], range: fullRange).first else {
-            print("ERROR: Unable to find match for the given input")
-            return []
-        }
-        
-        let hashtagCount = regexMatch.range(at: 1).length
-        
-        guard let level = Level(rawValue: hashtagCount) else {
-            fatalError("Unable to retrive header level from match")
-        }
+        let level = self.level(forMatch: match)
         
         let fontStyle = Style(
             attributeKey: .font,
@@ -47,7 +36,7 @@ public class HeaderElement: MarkdownElement {
             attributeKey: .foregroundColor,
             value: symbolsColor,
             startIndex: 0,
-            length: hashtagCount
+            length: level.rawValue
         )
         
         return [fontStyle, indicatorForegroundStyle]
@@ -59,6 +48,29 @@ public class HeaderElement: MarkdownElement {
             symbolsColor: stylesConfiguration.symbolsColor,
             fontProvider: newFontProvider
         )
+    }
+    
+    public override func replacementRanges(forMatch match: String) -> [ReplacementRange] {
+        let matchLevel = self.level(forMatch: match)
+        let range = NSRange(location: 0, length: matchLevel.rawValue + 1)
+        let replacementRange = ReplacementRange(range: range, replacementValue: NSAttributedString())
+        return [replacementRange]
+    }
+    
+    private func level(forMatch match: String) -> Level {
+        let fullRange = NSRange(location: 0, length: match.count)
+        
+        guard let regexMatch = regex.matches(in: match, options: [], range: fullRange).first else {
+            fatalError("ERROR: Unable to find match for the given input")
+        }
+        
+        let hashtagCount = regexMatch.range(at: 1).length
+        
+        guard let level = Level(rawValue: hashtagCount) else {
+            fatalError("Unable to retrive header level from match")
+        }
+        
+        return level
     }
     
     public enum Level: Int {

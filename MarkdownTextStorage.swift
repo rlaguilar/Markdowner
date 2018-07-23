@@ -28,7 +28,12 @@ public class MarkdownTextStorage: NSTextStorage {
     private var defaultElements: [MarkdownElement] {
         let boldElement = BoldElement()
         let italicElement = ItalicElement()
-        let bulletElement = BulletElement(symbolsColor: stylesConfiguration.symbolsColor)
+        let bulletElement = BulletElement(
+            symbolsColor: stylesConfiguration.symbolsColor,
+            textColor: stylesConfiguration.textColor,
+            font: stylesConfiguration.baseFont
+        )
+        
         let headerElement = HeaderElement(
             symbolsColor: stylesConfiguration.symbolsColor,
             fontProvider: DefaultHeaderElementFontProvider(font: stylesConfiguration.baseFont)
@@ -58,6 +63,28 @@ public class MarkdownTextStorage: NSTextStorage {
     public func use(elements: [MarkdownElement]) {
         self.markdownParser = MarkdownParser(markdownElements: elements)
         self.refreshContent()
+    }
+    
+    public func attributedString(removingMarkdownSymbols: Bool = true) -> NSAttributedString {
+        guard removingMarkdownSymbols else { return self }
+        
+        let rangesToRemove = markdownParser.replacementRanges(forString: string)
+        
+        let originalString = NSMutableAttributedString(attributedString: self)
+        
+        for replacementRange in rangesToRemove.reversed() {
+            if replacementRange.replacementValue.string.isEmpty {
+                originalString.deleteCharacters(in: replacementRange.range)
+            }
+            else {
+                originalString.replaceCharacters(
+                    in: replacementRange.range,
+                    with: replacementRange.replacementValue
+                )
+            }
+        }
+        
+        return originalString
     }
     
     // MARK: NSTextStorage subclass

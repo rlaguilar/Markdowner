@@ -25,6 +25,7 @@
 		F19243FC2105197D0056FD9B /* MarkdownTextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19243FB2105197D0056FD9B /* MarkdownTextViewTests.swift */; };
 		F19243FE21051A130056FD9B /* big-file.md in Resources */ = {isa = PBXBuildFile; fileRef = F19243FD21051A130056FD9B /* big-file.md */; };
 		F192440421052FB80056FD9B /* HeaderElementFontProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192440321052FB80056FD9B /* HeaderElementFontProvider.swift */; };
+		F192440621056C9F0056FD9B /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F192440521056C9F0056FD9B /* PreviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		F19243FB2105197D0056FD9B /* MarkdownTextViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTextViewTests.swift; sourceTree = "<group>"; };
 		F19243FD21051A130056FD9B /* big-file.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "big-file.md"; sourceTree = "<group>"; };
 		F192440321052FB80056FD9B /* HeaderElementFontProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderElementFontProvider.swift; sourceTree = "<group>"; };
+		F192440521056C9F0056FD9B /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		F4BE00D1B6CBE61A8449F158 /* Pods-Markdowner_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Markdowner_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Markdowner_Tests/Pods-Markdowner_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				F192440521056C9F0056FD9B /* PreviewViewController.swift */,
 			);
 			name = "Example for Markdowner";
 			path = Markdowner;
@@ -382,6 +385,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				F192440621056C9F0056FD9B /* PreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

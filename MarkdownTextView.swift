@@ -14,6 +14,8 @@ public class MarkdownTextView: UITextView {
         set { markdownStorage.stylesConfiguration = newValue }
     }
     
+    
+    
     private let markdownStorage: MarkdownTextStorage
     
     public init(frame: CGRect) {
@@ -34,5 +36,9 @@ public class MarkdownTextView: UITextView {
     
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func attributedString(removingMarkdownSymbols: Bool = true) -> NSAttributedString {
+        return markdownStorage.attributedString(removingMarkdownSymbols: removingMarkdownSymbols)
     }
 }

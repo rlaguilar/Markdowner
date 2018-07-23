@@ -12,10 +12,11 @@ import Markdowner
 class ViewController: UIViewController {
     @IBOutlet weak var wrapperView: UIView!
     
+    lazy var textView = MarkdownTextView(frame: wrapperView.bounds)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let textView = MarkdownTextView(frame: wrapperView.bounds)
         wrapperView.addSubview(textView)
         textView.frame = wrapperView.bounds
         textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -34,5 +35,11 @@ class ViewController: UIViewController {
             textColor: UIColor.darkGray,
             symbolsColor: UIColor.red
         )
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let previewVC = segue.destination as? PreviewViewController {
+            previewVC.markdownContent = textView.attributedString()
+        }
     }
 }

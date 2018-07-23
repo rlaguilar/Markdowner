@@ -22,4 +22,9 @@ public class ItalicElement: SimpleMarkdownElement {
             attrs: [.fontTraits: UIFontDescriptorSymbolicTraits.traitItalic]
         )
     }
+    
+    public override func replacementRanges(forMatch match: String) -> [ReplacementRange] {
+        let ranges = [NSRange(location: 0, length: 1), NSRange(location: match.count - 1, length: 1)]
+        return ranges.map { ReplacementRange(range: $0, replacementValue: NSAttributedString()) }
+    }
 }
