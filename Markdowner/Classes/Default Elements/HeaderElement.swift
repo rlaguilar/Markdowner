@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class HeaderElement: MarkdownElement {
+open class HeaderElement: MarkdownElement {
     let symbolsColor: UIColor
     let fontProvider: HeaderElementFontProvider
     
@@ -22,7 +22,7 @@ public class HeaderElement: MarkdownElement {
         super.init(regex: regex)
     }
     
-    public override func styles(forMatch match: String) -> [MarkdownElement.Style] {
+    open override func styles(forMatch match: String) -> [MarkdownElement.Style] {
         let level = self.level(forMatch: match)
         
         let fontStyle = Style(
@@ -42,7 +42,7 @@ public class HeaderElement: MarkdownElement {
         return [fontStyle, indicatorForegroundStyle]
     }
     
-    public override func applying(stylesConfiguration: StylesConfiguration) -> HeaderElement {
+    open override func applying(stylesConfiguration: StylesConfiguration) -> HeaderElement {
         let newFontProvider = fontProvider.applying(stylesConfiguration: stylesConfiguration)
         return HeaderElement(
             symbolsColor: stylesConfiguration.symbolsColor,
@@ -50,7 +50,7 @@ public class HeaderElement: MarkdownElement {
         )
     }
     
-    public override func replacementRanges(forMatch match: String) -> [ReplacementRange] {
+    open override func replacementRanges(forMatch match: String) -> [ReplacementRange] {
         let matchLevel = self.level(forMatch: match)
         let range = NSRange(location: 0, length: matchLevel.rawValue + 1)
         let replacementRange = ReplacementRange(range: range, replacementValue: NSAttributedString())

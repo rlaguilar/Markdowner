@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class MarkdownElement {
+open class MarkdownElement {
     public let regex: NSRegularExpression
     
     public init(regex: NSRegularExpression) {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class ItalicElement: MarkdownElement {
+open class ItalicElement: MarkdownElement {
     let symbolsColor: UIColor
     
     public init(symbolsColor: UIColor) {
@@ -25,7 +25,7 @@ public class ItalicElement: MarkdownElement {
         super.init(regex: regex)
     }
     
-    public override func styles(forMatch match: String) -> [MarkdownElement.Style] {
+    open override func styles(forMatch match: String) -> [MarkdownElement.Style] {
         let fontStyle = Style(
             attributeKey: .fontTraits,
             value: UIFontDescriptorSymbolicTraits.traitItalic,
@@ -50,11 +50,11 @@ public class ItalicElement: MarkdownElement {
         return foregroundStyles + [fontStyle]
     }
     
-    public override func applying(stylesConfiguration: StylesConfiguration) -> ItalicElement {
+    open override func applying(stylesConfiguration: StylesConfiguration) -> ItalicElement {
         return ItalicElement(symbolsColor: stylesConfiguration.symbolsColor)
     }
     
-    public override func replacementRanges(forMatch match: String) -> [ReplacementRange] {
+    open override func replacementRanges(forMatch match: String) -> [ReplacementRange] {
         let ranges = [NSRange(location: 0, length: 1), NSRange(location: match.count - 1, length: 1)]
         return ranges.map { ReplacementRange(range: $0, replacementValue: NSAttributedString()) }
     }

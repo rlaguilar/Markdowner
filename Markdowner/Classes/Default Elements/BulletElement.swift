@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class BulletElement: MarkdownElement {
+open class BulletElement: MarkdownElement {
     let symbolsColor: UIColor
     let textColor: UIColor
     let font: UIFont
@@ -26,7 +26,7 @@ public class BulletElement: MarkdownElement {
         super.init(regex: regex)
     }
     
-    public override func styles(forMatch match: String) -> [MarkdownElement.Style] {
+    open override func styles(forMatch match: String) -> [MarkdownElement.Style] {
         let indicatorColorStyle = Style.init(
             attributeKey: .foregroundColor,
             value: symbolsColor,
@@ -37,7 +37,7 @@ public class BulletElement: MarkdownElement {
         return [indicatorColorStyle]
     }
     
-    public override func replacementRanges(forMatch match: String) -> [ReplacementRange] {
+    open override func replacementRanges(forMatch match: String) -> [ReplacementRange] {
         let range = NSRange(location: 0, length: 2)
         let replacementValue = NSAttributedString(
             string: "• ",
@@ -47,7 +47,7 @@ public class BulletElement: MarkdownElement {
         return [ReplacementRange(range: range, replacementValue: replacementValue)]
     }
     
-    public override func applying(stylesConfiguration: StylesConfiguration) -> BulletElement {
+    open override func applying(stylesConfiguration: StylesConfiguration) -> BulletElement {
         return BulletElement(
             symbolsColor: stylesConfiguration.symbolsColor,
             textColor: stylesConfiguration.textColor,
