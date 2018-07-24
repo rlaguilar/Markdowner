@@ -28,6 +28,7 @@ public class MarkdownTextStorage: NSTextStorage {
     private var defaultElements: [MarkdownElement] {
         let boldElement = BoldElement(symbolsColor: stylesConfiguration.symbolsColor)
         let italicElement = ItalicElement(symbolsColor: stylesConfiguration.symbolsColor)
+        let strikeElement = StrikethroughElement(symbolsColor: stylesConfiguration.symbolsColor)
         let bulletElement = BulletElement(
             symbolsColor: stylesConfiguration.symbolsColor,
             textColor: stylesConfiguration.textColor,
@@ -39,7 +40,7 @@ public class MarkdownTextStorage: NSTextStorage {
             fontProvider: DefaultHeaderElementFontProvider(font: stylesConfiguration.baseFont)
         )
 
-        return [boldElement, italicElement, bulletElement, headerElement]
+        return [boldElement, italicElement, strikeElement, bulletElement, headerElement]
     }
     
     public override init() {

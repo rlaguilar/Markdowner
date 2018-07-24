@@ -1,20 +1,20 @@
 //
-//  BoldElementTests.swift
+//  StrikethroughElementTests.swift
 //  Markdowner_Example
 //
-//  Created by Reynaldo Aguilar on 7/21/18.
+//  Created by Reynaldo Aguilar on 7/24/18.
 //  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
 import XCTest
 @testable import Markdowner
 
-class BoldElementTests: XCTestCase {
-    var element = BoldElement(symbolsColor: .red)
+class StrikethroughElementTests: XCTestCase {
+    var element = StrikethroughElement(symbolsColor: .red)
     
     // MARK: - Regex tests
     func testRegex_WhenMathFullRange_ReturnsIt() {
-        let markdown = "**This is a bold string**"
+        let markdown = "~~This is a bold string~~"
         
         let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
         
@@ -24,10 +24,10 @@ class BoldElementTests: XCTestCase {
     
     func testRegex_WhenInvalidMatch_ReturnsNone() {
         let samples = [
-            "**This isn't a bold string*",
-            "*Nor is this**",
+            "~~This isn't a strikethrough string~",
+            "~Nor is this~~",
             "This is a plain text",
-            "This *is* a random text"
+            "This ~is~ a random text"
         ]
         
         for markdown in samples {
@@ -38,18 +38,18 @@ class BoldElementTests: XCTestCase {
     }
     
     func testRegex_WhenLineBreak_ReturnsNone() {
-        let markdown = "**a\nb**"
+        let markdown = "~~a\nb~~"
         
         let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
         
-        XCTAssert(matches.isEmpty, "Bolds should't extend by more than one line")
+        XCTAssert(matches.isEmpty, "Strikethrough should't extend by more than one line")
     }
     
     func testRegex_WhenMultipleMatches_ReturnsAll() {
         let samples = [
-            "**mm** **a**",
-            "**o O * match** n*",
-            "This time **one vale s** here ** here"
+            "~~mm~~ ~~a~~",
+            "~~o O ~ match~~ n~",
+            "This time ~~one vale s~~ here ~~ here"
         ]
         
         let expectedRanges: [[NSRange]] = [
@@ -66,7 +66,7 @@ class BoldElementTests: XCTestCase {
     }
     
     func testRegex_WhenSpaceBetweenIndicators_DoesNotMatch() {
-        let samples = ["**Hello **", "** Hello**"]
+        let samples = ["~~Hello ~~", "~~ Hello~~"]
         
         for markdown in samples {
             let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
@@ -76,7 +76,7 @@ class BoldElementTests: XCTestCase {
     }
     
     func testRegex_WhenEmptyContent_DoesNotMatch() {
-        let markdown = "****"
+        let markdown = "~~~~"
         
         let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
         
@@ -84,7 +84,7 @@ class BoldElementTests: XCTestCase {
     }
     
     func testRegex_WhenConsecutiveSymbols_DoNotMatch() {
-        let samples = ["***hello**", "**hello***"]
+        let samples = ["~~~hello~~", "~~hello~~~"]
         
         for markdown in samples {
             let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
@@ -94,7 +94,7 @@ class BoldElementTests: XCTestCase {
     }
     
     func testRegex_IfMatchContainsNonValidBoundaries_ReturnsIt() {
-        let samples = ["**a*b**", "**a***b**"]
+        let samples = ["~~a~b~~", "~~a~~~b~~"]
         
         for markdown in samples {
             let expectedRanges = [markdown.range]
@@ -108,17 +108,18 @@ class BoldElementTests: XCTestCase {
     }
     
     // MARK: - Styles tests
-    func testStyles_ReturnsBoldTrait() {
-        let markdown = "**Hello**"
+    func testStyles_ReturnsStrikethroughSyle() {
+        let markdown = "~~Hello~~"
+        let expectedRange = NSRange(location: 2, length: markdown.count - 4)
         
-        let fontTraits = element.styles(forMatch: markdown).first { $0.attributeKey == .fontTraits }
+        let strikethrough = element.styles(forMatch: markdown).first { $0.attributeKey == .strikethroughStyle }
         
-        XCTAssertEqual(fontTraits?.value as? UIFontDescriptorSymbolicTraits, .traitBold)
-        XCTAssertEqual(fontTraits?.range, markdown.range, "The traits should be applied the whole string")
+        XCTAssertEqual(strikethrough?.value as? Int, NSUnderlineStyle.styleSingle.rawValue)
+        XCTAssertEqual(strikethrough?.range, expectedRange, "The style should be applied to the whole content")
     }
     
     func testStyles_ReturnsIndicatorsColor() {
-        let markdown = "**Hello**"
+        let markdown = "~~Hello~~"
         let expectedColors = [element.symbolsColor, element.symbolsColor]
         let expectedRanges = [
             NSRange(location: 0, length: 2),
@@ -135,7 +136,7 @@ class BoldElementTests: XCTestCase {
     
     // MARK: - Replacement ranges
     func testReplacementRanges_ReturnValidRanges() {
-        let markdown = "**Hello**"
+        let markdown = "~~Hello~~"
         let expectedRanges = [
             ReplacementRange(
                 range: NSRange(location: 0, length: 2),
