@@ -41,7 +41,7 @@ open class BulletElement: MarkdownElement {
         let range = NSRange(location: 0, length: 2)
         let replacementValue = NSAttributedString(
             string: "• ",
-            attributes: [.foregroundColor: textColor, .font: font]
+            attributes: [.foregroundColor: textColor, .font: font.dynamic()]
         )
         
         return [ReplacementRange(range: range, replacementValue: replacementValue)]

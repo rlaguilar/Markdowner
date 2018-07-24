@@ -20,7 +20,7 @@ public class MarkdownTextStorage: NSTextStorage {
     
     private var defaultAttributes: [NSAttributedStringKey: Any] {
         return [
-            .font: stylesConfiguration.baseFont,
+            .font: stylesConfiguration.baseFont.dynamic(),
             .foregroundColor: stylesConfiguration.textColor
         ]
     }
