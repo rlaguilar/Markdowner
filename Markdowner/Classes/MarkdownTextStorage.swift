@@ -29,6 +29,22 @@ public class MarkdownTextStorage: NSTextStorage {
         let boldElement = BoldElement(symbolsColor: stylesConfiguration.symbolsColor)
         let italicElement = ItalicElement(symbolsColor: stylesConfiguration.symbolsColor)
         let strikeElement = StrikethroughElement(symbolsColor: stylesConfiguration.symbolsColor)
+        
+        guard let monospaceFont = UIFont(name: "Menlo-Regular", size: stylesConfiguration.baseFont.pointSize) else {
+            fatalError()
+        }
+        
+        let inlineCodeElement = InlineCodeElement(
+            symbolsColor: stylesConfiguration.symbolsColor,
+            font: monospaceFont
+        )
+        
+        let linkElement = LinkElement(
+            symbolsColor: stylesConfiguration.symbolsColor,
+            font: stylesConfiguration.baseFont,
+            linksColor: UIColor.lightGray
+        )
+        
         let bulletElement = BulletElement(
             symbolsColor: stylesConfiguration.symbolsColor,
             textColor: stylesConfiguration.textColor,
@@ -40,7 +56,8 @@ public class MarkdownTextStorage: NSTextStorage {
             fontProvider: DefaultHeaderElementFontProvider(font: stylesConfiguration.baseFont)
         )
 
-        return [boldElement, italicElement, strikeElement, bulletElement, headerElement]
+        return [boldElement, italicElement, strikeElement, inlineCodeElement,
+                linkElement, bulletElement, headerElement]
     }
     
     public override init() {
@@ -74,15 +91,10 @@ public class MarkdownTextStorage: NSTextStorage {
         let originalString = NSMutableAttributedString(attributedString: self)
         
         for replacementRange in rangesToRemove.reversed() {
-            if replacementRange.replacementValue.string.isEmpty {
-                originalString.deleteCharacters(in: replacementRange.range)
-            }
-            else {
-                originalString.replaceCharacters(
-                    in: replacementRange.range,
-                    with: replacementRange.replacementValue
-                )
-            }
+            originalString.replaceCharacters(
+                in: replacementRange.range,
+                with: replacementRange.replacementValue
+            )
         }
         
         return originalString
@@ -111,9 +123,9 @@ public class MarkdownTextStorage: NSTextStorage {
     override public func processEditing() {
         let paragraphRange = (string as NSString).paragraphRange(for: editedRange)
         
-        let styles = markdownParser.styles(forString: string, atRange: paragraphRange)
-        
         self.setAttributes(defaultAttributes, range: paragraphRange)
+        
+        let styles = markdownParser.styles(forString: string, atRange: paragraphRange)
         
         for style in styles {
             if style.attributeKey == .fontTraits {

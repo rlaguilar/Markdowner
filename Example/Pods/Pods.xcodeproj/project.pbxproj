@@ -28,6 +28,8 @@
 		F1924401210521E80056FD9B /* StyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1924400210521E80056FD9B /* StyleConfiguration.swift */; };
 		F1C1F7D621057E6F00C04639 /* ReplacementRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C1F7D521057E6F00C04639 /* ReplacementRange.swift */; };
 		F1C1F7DF2107660100C04639 /* StrikethroughElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C1F7DE2107660100C04639 /* StrikethroughElement.swift */; };
+		F1C1F7E42107760400C04639 /* LinkElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C1F7E32107760400C04639 /* LinkElement.swift */; };
+		F1C1F7E9210A144100C04639 /* InlineCodeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C1F7E8210A144100C04639 /* InlineCodeElement.swift */; };
 		FF108AE8D6AD0A1F35E5A7C2A89C0FAD /* Pods-Markdowner_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CB85788DCDF500BF412D5FC427CC8452 /* Pods-Markdowner_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -94,6 +96,8 @@
 		F1924400210521E80056FD9B /* StyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleConfiguration.swift; sourceTree = "<group>"; };
 		F1C1F7D521057E6F00C04639 /* ReplacementRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplacementRange.swift; sourceTree = "<group>"; };
 		F1C1F7DE2107660100C04639 /* StrikethroughElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrikethroughElement.swift; sourceTree = "<group>"; };
+		F1C1F7E32107760400C04639 /* LinkElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkElement.swift; sourceTree = "<group>"; };
+		F1C1F7E8210A144100C04639 /* InlineCodeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineCodeElement.swift; sourceTree = "<group>"; };
 		F6DC76B5B139EF6AF5B41521E49DE1BF /* Markdowner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Markdowner.modulemap; sourceTree = "<group>"; };
 		FBABFFB2237419C5B0B7D28D72656C6C /* Markdowner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Markdowner-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -265,6 +269,8 @@
 				F19243E42103E14A0056FD9B /* BulletElement.swift */,
 				F19243E82103E9ED0056FD9B /* HeaderElement.swift */,
 				F1C1F7DE2107660100C04639 /* StrikethroughElement.swift */,
+				F1C1F7E32107760400C04639 /* LinkElement.swift */,
+				F1C1F7E8210A144100C04639 /* InlineCodeElement.swift */,
 			);
 			name = "Default Elements";
 			path = "Markdowner/Classes/Default Elements";
@@ -418,7 +424,9 @@
 				F19243F821050E160056FD9B /* UIFont+.swift in Sources */,
 				F1C1F7DF2107660100C04639 /* StrikethroughElement.swift in Sources */,
 				DDCF8C11A1E9433A7B72AF900F86A986 /* Markdowner-dummy.m in Sources */,
+				F1C1F7E42107760400C04639 /* LinkElement.swift in Sources */,
 				F19243E52103E14A0056FD9B /* BulletElement.swift in Sources */,
+				F1C1F7E9210A144100C04639 /* InlineCodeElement.swift in Sources */,
 				F19243ED21041E100056FD9B /* MarkdownTextStorage.swift in Sources */,
 				F1C1F7D621057E6F00C04639 /* ReplacementRange.swift in Sources */,
 				F19243F621050C190056FD9B /* NSAttributedStringKey+.swift in Sources */,
