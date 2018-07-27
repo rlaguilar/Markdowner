@@ -94,7 +94,7 @@ class BulletElementTests: XCTestCase {
                 range: NSRange(location: 0, length: 2),
                 replacementValue: NSAttributedString(
                     string: "• ",
-                    attributes: [.foregroundColor: element.textColor, .font: element.font]
+                    attributes: [.foregroundColor: element.textColor, .font: element.font.dynamic()]
                 )
             )
         ]

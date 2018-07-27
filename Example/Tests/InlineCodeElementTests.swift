@@ -56,8 +56,8 @@ class InlineCodeElementTests: XCTestCase {
         
         let expectedRanges: [[NSRange]] = [
             [.init(location: 0, length: 4), .init(location: 5, length: 3)],
-            [.init(location: 0, length: 12)],
-            [.init(location: 10, length: 11)]
+            [.init(location: 0, length: 13)],
+            [.init(location: 10, length: 12)]
         ]
         
         zip(samples, expectedRanges).forEach { (markdown, ranges) in
@@ -115,7 +115,7 @@ class InlineCodeElementTests: XCTestCase {
         
         let fontStyle = element.styles(forMatch: markdown).first { $0.attributeKey == .font }
         
-        XCTAssertEqual(fontStyle?.value as? UIFont, codeFont)
+        XCTAssertEqual(fontStyle?.value as? UIFont, codeFont.dynamic())
         XCTAssertEqual(fontStyle?.range, markdown.range, "The font should be applied the whole string")
     }
     

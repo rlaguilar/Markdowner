@@ -21,7 +21,7 @@ open class LinkElement: MarkdownElement {
         // specifically from the link http://regexr.com/3e6m0 inside that question
         let urlRegexPattern = "(http(s)?:\\/\\/.)?(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)"
         
-        let linkPattern = "(?<!\\[)(\\[).+(\\])(\\()\(urlRegexPattern)(\\))(?!\\))"
+        let linkPattern = "(?<!\\[)(\\[)(?![ \\[]).+(?<![ \\]])(\\])(\\()\(urlRegexPattern)(\\))(?!\\))"
         
         guard let regex = try? NSRegularExpression(pattern: linkPattern, options: []) else {
             fatalError()
@@ -44,12 +44,12 @@ open class LinkElement: MarkdownElement {
         
         let textRange = NSRange(
             location: ranges[0].location + 1,
-            length: ranges[1].location - ranges[0].location
+            length: ranges[1].location - ranges[0].location - 1
         )
         
         let urlRange = NSRange(
             location: ranges[2].location + 1,
-            length: ranges[3].location - ranges[2].location
+            length: ranges[3].location - ranges[2].location - 1
         )
         
         let textStyles = [

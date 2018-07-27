@@ -29,6 +29,7 @@
 		F1C1F7D9210629DF00C04639 /* StylesConfiguration+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C1F7D72106296B00C04639 /* StylesConfiguration+.swift */; };
 		F1C1F7E2210772BC00C04639 /* StrikethroughElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C1F7E0210772A100C04639 /* StrikethroughElementTests.swift */; };
 		F1C1F7EC210A195600C04639 /* InlineCodeElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C1F7EA210A195100C04639 /* InlineCodeElementTests.swift */; };
+		F1C1F7F1210B87B700C04639 /* LinkElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C1F7EF210B877D00C04639 /* LinkElementTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		F1C1F7D72106296B00C04639 /* StylesConfiguration+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StylesConfiguration+.swift"; sourceTree = "<group>"; };
 		F1C1F7E0210772A100C04639 /* StrikethroughElementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrikethroughElementTests.swift; sourceTree = "<group>"; };
 		F1C1F7EA210A195100C04639 /* InlineCodeElementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineCodeElementTests.swift; sourceTree = "<group>"; };
+		F1C1F7EF210B877D00C04639 /* LinkElementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkElementTests.swift; sourceTree = "<group>"; };
 		F4BE00D1B6CBE61A8449F158 /* Pods-Markdowner_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Markdowner_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Markdowner_Tests/Pods-Markdowner_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,9 +203,10 @@
 				F19243DA2103D1120056FD9B /* BoldElementTests.swift */,
 				F19243E62103E3CC0056FD9B /* BulletElementTests.swift */,
 				F19243EA2103EE570056FD9B /* HeaderElementTests.swift */,
-				F19243E22103DCDB0056FD9B /* ItalicElementTests.swift */,
-				F1C1F7E0210772A100C04639 /* StrikethroughElementTests.swift */,
 				F1C1F7EA210A195100C04639 /* InlineCodeElementTests.swift */,
+				F19243E22103DCDB0056FD9B /* ItalicElementTests.swift */,
+				F1C1F7EF210B877D00C04639 /* LinkElementTests.swift */,
+				F1C1F7E0210772A100C04639 /* StrikethroughElementTests.swift */,
 			);
 			name = "Default Elements";
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 				F192440421052FB80056FD9B /* HeaderElementFontProvider.swift in Sources */,
 				F19243DF2103D33A0056FD9B /* String+.swift in Sources */,
+				F1C1F7F1210B87B700C04639 /* LinkElementTests.swift in Sources */,
 				F19243E32103DCDB0056FD9B /* ItalicElementTests.swift in Sources */,
 				F19243DC2103D1500056FD9B /* BoldElementTests.swift in Sources */,
 			);
