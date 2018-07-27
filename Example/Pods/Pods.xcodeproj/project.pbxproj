@@ -226,11 +226,11 @@
 				F19243FF210521A80056FD9B /* Models */,
 				F19243F421050C070056FD9B /* Extensions */,
 				F19243D52103CF880056FD9B /* Default Elements */,
-				F0EFFD777410BC7E7BE19232FAB31378 /* Pod */,
-				C698D2D832F1609438AE8FC55C7B1E77 /* Support Files */,
 				F19243EC21041E100056FD9B /* MarkdownTextStorage.swift */,
 				F19243EE2104213F0056FD9B /* MarkdownTextView.swift */,
 				F19243F021042E8D0056FD9B /* MarkdownParser.swift */,
+				F0EFFD777410BC7E7BE19232FAB31378 /* Pod */,
+				C698D2D832F1609438AE8FC55C7B1E77 /* Support Files */,
 			);
 			name = Markdowner;
 			path = ../..;

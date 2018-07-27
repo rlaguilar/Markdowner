@@ -14,8 +14,6 @@ public class MarkdownTextView: UITextView {
         set { markdownStorage.stylesConfiguration = newValue }
     }
     
-    
-    
     private let markdownStorage: MarkdownTextStorage
     
     public init(frame: CGRect) {
