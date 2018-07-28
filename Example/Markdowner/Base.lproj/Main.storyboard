@@ -23,25 +23,29 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w35-tI-1dl">
-                                <rect key="frame" x="20" y="84" width="334" height="499"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="20" y="84" width="334" height="507"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wrg-nG-PZb">
-                                <rect key="frame" x="160" y="603" width="54" height="30"/>
-                                <state key="normal" title="Preview"/>
+                                <rect key="frame" x="130" y="611" width="114" height="44"/>
+                                <color key="backgroundColor" red="0.25585709815792007" green="0.62139034532639548" blue="0.81146763392857146" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="30" minY="13" maxX="30" maxY="13"/>
+                                <state key="normal" title="Preview">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="83o-3K-cTG" kind="show" id="bGU-uv-F5r"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.55294117649999996" green="0.84705882349999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Wrg-nG-PZb" secondAttribute="bottom" constant="12" id="GYf-Kc-xkR"/>
                             <constraint firstItem="w35-tI-1dl" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Ie0-ML-qYn"/>
                             <constraint firstItem="Wrg-nG-PZb" firstAttribute="top" secondItem="w35-tI-1dl" secondAttribute="bottom" constant="20" id="Tkr-jj-eiS"/>
                             <constraint firstItem="Wrg-nG-PZb" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="cgT-Mz-N1L"/>
                             <constraint firstItem="w35-tI-1dl" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="pns-uB-dNy"/>
                             <constraint firstItem="w35-tI-1dl" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="tDT-0g-0v5"/>
-                            <constraint firstItem="w35-tI-1dl" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="xWj-uL-mhQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eNo-33-7Yu"/>
@@ -66,16 +70,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ohe-1C-y5c">
-                                <rect key="frame" x="16" y="94" width="342" height="573"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="16" y="84" width="342" height="583"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ohe-1C-y5c" firstAttribute="centerX" secondItem="fgN-1S-u2m" secondAttribute="centerX" id="07m-bo-zD7"/>
-                            <constraint firstItem="ohe-1C-y5c" firstAttribute="top" secondItem="gdM-Hk-Ob7" secondAttribute="bottom" constant="30" id="3va-oJ-NKA"/>
+                            <constraint firstItem="ohe-1C-y5c" firstAttribute="top" secondItem="gdM-Hk-Ob7" secondAttribute="bottom" constant="20" id="3va-oJ-NKA"/>
                             <constraint firstItem="e10-4W-e3g" firstAttribute="top" secondItem="ohe-1C-y5c" secondAttribute="bottom" id="lYz-JQ-GZn"/>
                             <constraint firstItem="ohe-1C-y5c" firstAttribute="leading" secondItem="fgN-1S-u2m" secondAttribute="leadingMargin" id="yvb-Pq-5U3"/>
                         </constraints>

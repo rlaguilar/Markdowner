@@ -22,5 +22,10 @@ class PreviewViewController: UIViewController {
         } else {
             // Fallback on earlier versions
         }
+        
+        // scroll the text view content to the top in the next iteration of the run loop.
+        DispatchQueue.main.async {
+            self.textView.setContentOffset(.zero, animated: false)
+        }
     }
 }

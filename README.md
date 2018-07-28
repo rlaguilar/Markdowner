@@ -44,7 +44,7 @@ textView.stylesConfiguration = StylesConfiguration(
 )
 ```
 
-Creating custom elements is as simple as subclassing the type `MarkdownElement`, and the calling the function `textView.use(elements: [MarkdownElement])` passing as arguments the list of markdown elements that you want to use. As a guide for creating new elements you could use any of the already implemented ones inside the folder `Markdowner/Classes/Default Elements`.
+Creating custom elements is as simple as subclassing the type `MarkdownElement`, and then calling the function `textView.use(elements: [MarkdownElement])` passing as arguments the list of markdown elements that you want to use. As a guide for creating new elements you could use any of the already implemented ones inside the folder `Markdowner/Classes/Default Elements`.
 
 It's important to note that for now `Markdowner` doesn't support initialization from Storyboards.
 

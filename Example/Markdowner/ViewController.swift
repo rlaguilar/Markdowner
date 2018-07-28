@@ -16,9 +16,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         wrapperView.addSubview(textView)
         textView.frame = wrapperView.bounds
+        textView.backgroundColor = .clear
         textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         textView.keyboardDismissMode = .onDrag
         
