@@ -7,6 +7,8 @@
 
 `Markdowner` is a library intended to edit and preview markdown in real time. It supports custom markdown elements or use only a subset of the standard ones. Custom fonts and colors are also supported.  
 
+![Preview of Library Demo](Assets/demo.jpeg)
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
