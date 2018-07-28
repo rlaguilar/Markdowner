@@ -33,6 +33,9 @@ public class MarkdownTextView: UITextView {
     }
     
     public required init?(coder aDecoder: NSCoder) {
+        // This initializer isn't implemented because replacing the text storage of a text view
+        // isn't working, even when the Apple docs state that it should be as simple as calling:
+        // `markdownStorage.addLayoutManager(self.layoutManager)`
         fatalError("init(coder:) has not been implemented")
     }
     

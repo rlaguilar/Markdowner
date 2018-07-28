@@ -1,7 +1,7 @@
 {
   "name": "Markdowner",
   "version": "0.1.0",
-  "summary": "A short description of Markdowner.",
+  "summary": "Live markdown previewer and editor.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/rlaguilar/Markdowner",
   "license": {
@@ -16,7 +16,8 @@
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "10.0"
   },
-  "source_files": "Markdowner/Classes/**/*"
+  "source_files": "Markdowner/Classes/**/*",
+  "frameworks": "UIKit"
 }
