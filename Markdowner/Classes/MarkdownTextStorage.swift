@@ -9,7 +9,7 @@ import Foundation
 
 /// Custom `NSTextStorage` subclass that will render text as markdown.
 public class MarkdownTextStorage: NSTextStorage {
-    var stylesConfiguration: StylesConfiguration {
+    public var stylesConfiguration: StylesConfiguration {
         didSet {
             self.refreshContent()
         }
