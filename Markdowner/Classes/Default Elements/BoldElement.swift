@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Type used to identify **bold elements**.
 open class BoldElement: MarkdownElement {
     let symbolsColor: UIColor
     

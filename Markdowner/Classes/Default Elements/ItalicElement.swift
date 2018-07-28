@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Type used to identify _italic elements_.
 open class ItalicElement: MarkdownElement {
     let symbolsColor: UIColor
     

@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// Type used to identify bullet elements.
+/// - NOTE: - This is a example of a bullet.
 open class BulletElement: MarkdownElement {
     let symbolsColor: UIColor
     let textColor: UIColor

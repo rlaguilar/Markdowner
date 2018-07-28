@@ -52,16 +52,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05906A4618A65E3F67EE6C3C17083A94 /* Pods_Markdowner_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Markdowner_Example.framework; path = "Pods-Markdowner_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		06ECC390CC05BFEAC50B694D475F676B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		05906A4618A65E3F67EE6C3C17083A94 /* Pods_Markdowner_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Markdowner_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		06ECC390CC05BFEAC50B694D475F676B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		16B7F5E18B4AC7F1C2C87251328220EA /* Pods-Markdowner_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Markdowner_Tests.modulemap"; sourceTree = "<group>"; };
 		196EAC7A1A7330E5BEACA3FE5AEF7022 /* MarkdownTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownTextView.swift; path = Markdowner/Classes/MarkdownTextView.swift; sourceTree = "<group>"; };
-		1E9EBC636BD4F1DAB95EC500C87A9BD5 /* Markdowner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Markdowner.framework; path = Markdowner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E9EBC636BD4F1DAB95EC500C87A9BD5 /* Markdowner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Markdowner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2249CBD55DFA549D2C3383421181FC6C /* Pods-Markdowner_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Markdowner_Tests-dummy.m"; sourceTree = "<group>"; };
 		27837A154F602C6BDCE50611C6F463FE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2856B35C7852A9BB17E6A7B9D08E20AD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28EB82D4BC6F14D0F9572A3722698144 /* Markdowner-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Markdowner-prefix.pch"; sourceTree = "<group>"; };
-		305E8F8CF4A9D478ED3E7FB1B39D51AE /* Pods_Markdowner_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Markdowner_Tests.framework; path = "Pods-Markdowner_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		305E8F8CF4A9D478ED3E7FB1B39D51AE /* Pods_Markdowner_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Markdowner_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FBB73295E74B717A4804431FC04786 /* MarkdownTextStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownTextStorage.swift; path = Markdowner/Classes/MarkdownTextStorage.swift; sourceTree = "<group>"; };
 		543E28F03460E835047AA584FEC5A4E8 /* Pods-Markdowner_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Markdowner_Example-resources.sh"; sourceTree = "<group>"; };
 		60A6D6D51B81D49B6FDA88E22E74BEF5 /* Pods-Markdowner_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Markdowner_Example-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		7FC716F13A48D2A5AFF940A145DFDB6D /* Markdowner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Markdowner-umbrella.h"; sourceTree = "<group>"; };
 		8D18768F3723214C0C06DB9D06DA9DB6 /* Markdowner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Markdowner.modulemap; sourceTree = "<group>"; };
 		908E902E026C5C22904CF9014A5604AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		998C7EB58B5E5AD09E77A5A9DE742305 /* Pods-Markdowner_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Markdowner_Example-umbrella.h"; sourceTree = "<group>"; };
 		9C31C1888F1ED86EB028C34F29EAA422 /* Pods-Markdowner_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Markdowner_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		9E33524B6BACD97136E4A24CC5A31F0A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 		AD00CC8DAA2D826BF7454E7760FAA80C /* Pods-Markdowner_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Markdowner_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		AE3C455794FF5C24DA31FBE612F77FB0 /* InlineCodeElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InlineCodeElement.swift; sourceTree = "<group>"; };
 		AEC2F3F1AA8B92A01C6E38C2020C3EC7 /* HeaderElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeaderElement.swift; sourceTree = "<group>"; };
-		AF7AB01631A79EE8F72ACED0AD0C1547 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		AF7AB01631A79EE8F72ACED0AD0C1547 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		BBE49BA7BC066E55D0A8F2B5760FBD2C /* Pods-Markdowner_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Markdowner_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		BC2C02191C153C1554B35DEE8B2D09D4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		C2C2CB588E49423FF1172D2383C162BE /* BulletElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BulletElement.swift; sourceTree = "<group>"; };
@@ -99,9 +99,9 @@
 		E59CF043E19BAA6997C75034762A85DF /* UIFont+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		E6039D65822B9733862A2E4E7F51CD8C /* NSAttributedStringKey+.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSAttributedStringKey+.swift"; sourceTree = "<group>"; };
 		EA7BF899B4E91BFCD99F65BE7CEF844C /* Pods-Markdowner_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Markdowner_Example.release.xcconfig"; sourceTree = "<group>"; };
-		EF23D17639B540AFE4BE6596C9FD0759 /* MarkdownParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkdownParser.swift; path = Markdowner/Classes/MarkdownParser.swift; sourceTree = "<group>"; };
+		EF23D17639B540AFE4BE6596C9FD0759 /* MarkdownParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MarkdownParser.swift; sourceTree = "<group>"; };
 		F250C74AF9C190C6D19D50778E11226A /* LinkElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LinkElement.swift; sourceTree = "<group>"; };
-		FC3057381DFF7F5E45F3EB4A7236A616 /* Markdowner.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = Markdowner.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FC3057381DFF7F5E45F3EB4A7236A616 /* Markdowner.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = Markdowner.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +177,7 @@
 		31BBEF5458F5EDB3EA985AD3DFF61CED /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EF23D17639B540AFE4BE6596C9FD0759 /* MarkdownParser.swift */,
 				D1F95246F9C4F76A1EE7892BB4CF9C77 /* ReplacementRange.swift */,
 				D35D989A3452AED1732E2C9B29F59CA2 /* StyleConfiguration.swift */,
 			);
@@ -277,7 +278,6 @@
 		D152E2AECB9A9FDD15AE8CD367D5108D /* Markdowner */ = {
 			isa = PBXGroup;
 			children = (
-				EF23D17639B540AFE4BE6596C9FD0759 /* MarkdownParser.swift */,
 				50FBB73295E74B717A4804431FC04786 /* MarkdownTextStorage.swift */,
 				196EAC7A1A7330E5BEACA3FE5AEF7022 /* MarkdownTextView.swift */,
 				7682F352515CD87ABB98BD8BC427F959 /* Default Elements */,

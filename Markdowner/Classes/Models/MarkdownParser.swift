@@ -7,13 +7,25 @@
 
 import Foundation
 
+/// Object used to identify markdown attributes inside a text.
 struct MarkdownParser {
+    
+    /// Markdown elements that will be used to process text values.
     let markdownElements: [MarkdownElement]
     
+    /// Creates a new instance of a `MarkdownParser` supplying the markdown elements to use when
+    /// processing text.
+    ///
+    /// - Parameter markdownElements: Elements to use to identify markdown attributes.
     init(markdownElements: [MarkdownElement]) {
         self.markdownElements = markdownElements
     }
     
+    /// Computes a list of ranges that should be replaced from the given markdown string in order
+    /// to display a ready version of the markdown for preview.
+    ///
+    /// - Parameter string: Markdown string to process.
+    /// - Returns: List of ranges to be replaced from the string to create the markdown preview.
     func replacementRanges(forString string: String) -> [ReplacementRange] {
         let fullRange = NSRange(location: 0, length: string.count)
         var ranges: [ReplacementRange] = []
@@ -37,6 +49,12 @@ struct MarkdownParser {
         return ranges.sorted(by: { $0.range.location < $1.range.location })
     }
     
+    /// Computes the list of markdown styles that correspond to the given string.
+    ///
+    /// - Parameters:
+    ///   - string: String value to compute its styles
+    ///   - range: Only styles inside this range will be retrieved.
+    /// - Returns: List of markdown styles for the given parameters.
     func styles(forString string: String, atRange range: NSRange) -> [MarkdownElement.Style] {
         var styles: [MarkdownElement.Style] = []
         

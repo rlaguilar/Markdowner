@@ -7,6 +7,9 @@
 
 import Foundation
 
+/// Type used to identify header elements.
+/// - NOTE:
+///     ## A header like this
 open class HeaderElement: MarkdownElement {
     let symbolsColor: UIColor
     let fontProvider: HeaderElementFontProvider

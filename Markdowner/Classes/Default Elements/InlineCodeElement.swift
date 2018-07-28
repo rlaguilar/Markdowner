@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Type used to identify `inline code blocks`.
 open class InlineCodeElement: MarkdownElement {
     let symbolsColor: UIColor
     let font: UIFont

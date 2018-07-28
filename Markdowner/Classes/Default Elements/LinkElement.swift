@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// Type used to identify links.
+/// - NOTE: [This](www.sample.com) is a sample of a link.
 open class LinkElement: MarkdownElement {
     let symbolsColor: UIColor
     let textFont: UIFont

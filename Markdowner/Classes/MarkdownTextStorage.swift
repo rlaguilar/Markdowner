@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Custom `NSTextStorage` subclass that will render text as markdown.
 public class MarkdownTextStorage: NSTextStorage {
     var stylesConfiguration: StylesConfiguration {
         didSet {
@@ -78,11 +79,19 @@ public class MarkdownTextStorage: NSTextStorage {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Indicates to the storage the set of markdown elements that will be used to process the text.
+    ///
+    /// - Parameter elements: Markdown elements to use (they can be custom elements or the default ones).
     public func use(elements: [MarkdownElement]) {
         self.markdownParser = MarkdownParser(markdownElements: elements)
         self.refreshContent()
     }
     
+    /// Retrieves an attributted string containing a preview of the content inside this storage.
+    ///
+    /// - Parameter removingMarkdownSymbols: If equal to `true`, markdown symbols will be removed
+    ///   from the resultant preview.
+    /// - Returns: Preview of the markdown content in the storage.
     public func attributedString(removingMarkdownSymbols: Bool = true) -> NSAttributedString {
         guard removingMarkdownSymbols else { return self }
         

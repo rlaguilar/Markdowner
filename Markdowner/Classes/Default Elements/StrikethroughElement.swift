@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Type used to identify ~strike thorugh elements~.
 open class StrikethroughElement: MarkdownElement {
     let symbolsColor: UIColor
     
