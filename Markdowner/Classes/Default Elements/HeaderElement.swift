@@ -91,7 +91,7 @@ public protocol HeaderElementFontProvider {
     func applying(stylesConfiguration: StylesConfiguration) -> Self
 }
 
-final class DefaultHeaderElementFontProvider: HeaderElementFontProvider {
+final public class DefaultHeaderElementFontProvider: HeaderElementFontProvider {
     let font: UIFont
     
     public init(font: UIFont) {
