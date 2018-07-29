@@ -96,18 +96,23 @@ public protocol HeaderElementFontProvider {
 
 final public class DefaultHeaderElementFontProvider: HeaderElementFontProvider {
     let font: UIFont
+    let useDynamicType: Bool
     
-    public init(font: UIFont) {
+    public init(font: UIFont, useDynamicType: Bool) {
         self.font = font.adding(traits: .traitBold)
+        self.useDynamicType = useDynamicType
     }
     
     public func font(forLevel level: HeaderElement.Level) -> UIFont {
         let extraSize = CGFloat(HeaderElement.Level.maxLevel.rawValue - level.rawValue)
         let newFont = self.font.withSize(self.font.pointSize + extraSize)
-        return newFont.dynamic()
+        return useDynamicType ? newFont.dynamic() : newFont
     }
     
     public func applying(stylesConfiguration: StylesConfiguration) -> DefaultHeaderElementFontProvider {
-        return DefaultHeaderElementFontProvider(font: stylesConfiguration.baseFont)
+        return DefaultHeaderElementFontProvider(
+            font: stylesConfiguration.baseFont,
+            useDynamicType: stylesConfiguration.useDynamicType
+        )
     }
 }

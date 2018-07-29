@@ -13,11 +13,13 @@ open class BulletElement: MarkdownElement {
     public let symbolsColor: UIColor
     public let textColor: UIColor
     public let font: UIFont
+    public let useDynamicType: Bool
     
-    public init(symbolsColor: UIColor, textColor: UIColor, font: UIFont) {
+    public init(symbolsColor: UIColor, textColor: UIColor, font: UIFont, useDynamicType: Bool) {
         self.symbolsColor = symbolsColor
         self.textColor = textColor
         self.font = font
+        self.useDynamicType = useDynamicType
         
         let pattern = "^[-|*] .+"
         
@@ -41,9 +43,11 @@ open class BulletElement: MarkdownElement {
     
     open override func replacementRanges(forMatch match: String) -> [ReplacementRange] {
         let range = NSRange(location: 0, length: 2)
+        let font = useDynamicType ? self.font.dynamic() : self.font
+        
         let replacementValue = NSAttributedString(
             string: "• ",
-            attributes: [.foregroundColor: textColor, .font: font.dynamic()]
+            attributes: [.foregroundColor: textColor, .font: font]
         )
         
         return [ReplacementRange(range: range, replacementValue: replacementValue)]
@@ -53,7 +57,8 @@ open class BulletElement: MarkdownElement {
         return BulletElement(
             symbolsColor: stylesConfiguration.symbolsColor,
             textColor: stylesConfiguration.textColor,
-            font: stylesConfiguration.baseFont
+            font: stylesConfiguration.baseFont,
+            useDynamicType: stylesConfiguration.useDynamicType
         )
     }
 }

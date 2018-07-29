@@ -19,9 +19,13 @@ open class StylesConfiguration {
     /// Color that will be used to display the markdown symbols.
     public let symbolsColor: UIColor
     
-    public init(baseFont: UIFont, textColor: UIColor, symbolsColor: UIColor) {
+    /// Indicates if should use fonts that support dynamic type.
+    public let useDynamicType: Bool
+    
+    public init(baseFont: UIFont, textColor: UIColor, symbolsColor: UIColor, useDynamicType: Bool) {
         self.baseFont = baseFont
         self.textColor = textColor
         self.symbolsColor = symbolsColor
+        self.useDynamicType = useDynamicType
     }
 }

@@ -33,7 +33,8 @@ class ViewController: UIViewController {
         textView.stylesConfiguration = StylesConfiguration(
             baseFont: UIFont.systemFont(ofSize: 18),
             textColor: UIColor.darkGray,
-            symbolsColor: UIColor.red
+            symbolsColor: UIColor.red,
+            useDynamicType: true
         )
     }
     

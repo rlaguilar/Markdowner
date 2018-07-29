@@ -12,7 +12,7 @@ import XCTest
 class InlineCodeElementTests: XCTestCase {
     let codeFont = UIFont(name: "Menlo-Regular", size: 10)!
     
-    lazy var element = InlineCodeElement(symbolsColor: .red, font: codeFont)
+    lazy var element = InlineCodeElement(symbolsColor: .red, font: codeFont, useDynamicType: true)
     
     // MARK: - Regex tests
     func testRegex_WhenMathFullRange_ReturnsIt() {
@@ -162,5 +162,13 @@ class InlineCodeElementTests: XCTestCase {
         let symbolsColors = configurations.map { element.applying(stylesConfiguration: $0).symbolsColor }
         
         XCTAssertEqual(symbolsColors, configurations.map { $0.symbolsColor })
+    }
+    
+    func testApplyStylesConfiguration_UpdateUseDynamicType() {
+        let configurations = StylesConfiguration.mockConfigurations()
+        
+        let dynamicTypes = configurations.map { element.applying(stylesConfiguration: $0).useDynamicType }
+        
+        XCTAssertEqual(dynamicTypes, configurations.map { $0.useDynamicType })
     }
 }
