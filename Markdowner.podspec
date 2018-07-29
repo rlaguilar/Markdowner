@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Markdowner'
-  s.version          = '1.0.1'
+  s.version          = '1.1.0'
   s.summary          = 'Live markdown previewer and editor.'
   s.swift_version    = '4.1'
 
