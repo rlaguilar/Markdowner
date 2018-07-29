@@ -9,8 +9,8 @@ import Foundation
 
 /// Type used to identify `inline code blocks`.
 open class InlineCodeElement: MarkdownElement {
-    let symbolsColor: UIColor
-    let font: UIFont
+    public let symbolsColor: UIColor
+    public let font: UIFont
     
     public init(symbolsColor: UIColor, font: UIFont) {
         self.symbolsColor = symbolsColor

@@ -10,9 +10,9 @@ import Foundation
 /// Type used to identify bullet elements.
 /// - NOTE: - This is a example of a bullet.
 open class BulletElement: MarkdownElement {
-    let symbolsColor: UIColor
-    let textColor: UIColor
-    let font: UIFont
+    public let symbolsColor: UIColor
+    public let textColor: UIColor
+    public let font: UIFont
     
     public init(symbolsColor: UIColor, textColor: UIColor, font: UIFont) {
         self.symbolsColor = symbolsColor
