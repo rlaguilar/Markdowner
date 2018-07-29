@@ -85,6 +85,16 @@ class HeaderElementTests: XCTestCase {
         XCTAssert(matches.isEmpty, "There is no content after the header indicator")
     }
     
+    func testRegex_DoesNotRecognizeMoreThanMaxLevel() {
+        let element = HeaderElement(symbolsColor: .red, fontProvider: fontProvider, maxLevel: 1)
+        
+        let markdown = "## Hello"
+        
+        let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
+        
+        XCTAssert(matches.isEmpty)
+    }
+    
     // MARK: - Styles tests
     func testStyles_ReturnsCorrectFontSize() {
         let samples = [

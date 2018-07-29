@@ -14,11 +14,13 @@ open class HeaderElement: MarkdownElement {
     let symbolsColor: UIColor
     let fontProvider: HeaderElementFontProvider
     
-    public init(symbolsColor: UIColor, fontProvider: HeaderElementFontProvider) {
+    public init(symbolsColor: UIColor, fontProvider: HeaderElementFontProvider, maxLevel: Int = 6) {
+        guard maxLevel >= 1 else { fatalError() }
+        
         self.symbolsColor = symbolsColor
         self.fontProvider = fontProvider
         
-        guard let regex = try? NSRegularExpression(pattern: "^(#{1,6}) .+", options: .anchorsMatchLines) else {
+        guard let regex = try? NSRegularExpression(pattern: "^(#{1,\(maxLevel)}) .+", options: .anchorsMatchLines) else {
             fatalError()
         }
         
