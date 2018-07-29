@@ -11,8 +11,13 @@ import Foundation
 /// displaying as a markdown preview (i.e., without displaying the markdown symbols)
 public struct ReplacementRange: Equatable {
     /// Range which content should be replaced
-    let range: NSRange
+    public let range: NSRange
     
     /// Value that will replace the content that's currently in the string at range `range`.
-    let replacementValue: NSAttributedString
+    public let replacementValue: NSAttributedString
+    
+    public init(range: NSRange, replacementValue: NSAttributedString) {
+        self.range = range
+        self.replacementValue = replacementValue
+    }
 }
