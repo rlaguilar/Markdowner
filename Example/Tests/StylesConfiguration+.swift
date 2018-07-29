@@ -15,12 +15,14 @@ extension StylesConfiguration {
             StylesConfiguration(
                 baseFont: UIFont.systemFont(ofSize: 10),
                 textColor: .black,
-                symbolsColor: .red
+                symbolsColor: .red,
+                useDynamicType: true
             ),
             StylesConfiguration(
                 baseFont: UIFont.systemFont(ofSize: 12),
                 textColor: .gray,
-                symbolsColor: .blue
+                symbolsColor: .blue,
+                useDynamicType: false
             )
         ]
     }

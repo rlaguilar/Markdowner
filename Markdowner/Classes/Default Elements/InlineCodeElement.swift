@@ -9,12 +9,14 @@ import Foundation
 
 /// Type used to identify `inline code blocks`.
 open class InlineCodeElement: MarkdownElement {
-    let symbolsColor: UIColor
-    let font: UIFont
+    public let symbolsColor: UIColor
+    public let font: UIFont
+    public let useDynamicType: Bool
     
-    public init(symbolsColor: UIColor, font: UIFont) {
+    public init(symbolsColor: UIColor, font: UIFont, useDynamicType: Bool) {
         self.symbolsColor = symbolsColor
         self.font = font
+        self.useDynamicType = useDynamicType
         
         let pattern = "(?<!`)`(?![ `]).*?(?<![ `])`(?!`)"
         
@@ -28,7 +30,7 @@ open class InlineCodeElement: MarkdownElement {
     open override func styles(forMatch match: String) -> [MarkdownElement.Style] {
         let fontStyle = Style(
             attributeKey: .font,
-            value: font.dynamic(),
+            value: useDynamicType ? font.dynamic() : font,
             startIndex: 0,
             length: match.count
         )
@@ -53,7 +55,8 @@ open class InlineCodeElement: MarkdownElement {
     open override func applying(stylesConfiguration: StylesConfiguration) -> InlineCodeElement {
         return InlineCodeElement(
             symbolsColor: stylesConfiguration.symbolsColor,
-            font: font
+            font: font,
+            useDynamicType: stylesConfiguration.useDynamicType
         )
     }
     

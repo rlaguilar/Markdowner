@@ -163,18 +163,7 @@ class ItalicElementTests: XCTestCase {
     
     // MARK: - Update from Style Configuration tests
     func testApplyStylesConfiguration_UpdateSymbolsColor() {
-        let configurations = [
-            StylesConfiguration(
-                baseFont: UIFont.systemFont(ofSize: 10),
-                textColor: .black,
-                symbolsColor: .red
-            ),
-            StylesConfiguration(
-                baseFont: UIFont.systemFont(ofSize: 10),
-                textColor: .black,
-                symbolsColor: .blue
-            )
-        ]
+        let configurations = StylesConfiguration.mockConfigurations()
         
         let symbolsColors = configurations.map { element.applying(stylesConfiguration: $0).symbolsColor }
         

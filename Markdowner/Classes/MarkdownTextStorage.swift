@@ -20,8 +20,11 @@ public class MarkdownTextStorage: NSTextStorage {
     private let backingString = NSMutableAttributedString()
     
     private var defaultAttributes: [NSAttributedStringKey: Any] {
+        let baseFont = stylesConfiguration.baseFont
+        let font = stylesConfiguration.useDynamicType ? baseFont.dynamic() : baseFont
+        
         return [
-            .font: stylesConfiguration.baseFont.dynamic(),
+            .font: font,
             .foregroundColor: stylesConfiguration.textColor
         ]
     }
@@ -37,7 +40,8 @@ public class MarkdownTextStorage: NSTextStorage {
         
         let inlineCodeElement = InlineCodeElement(
             symbolsColor: stylesConfiguration.symbolsColor,
-            font: monospaceFont
+            font: monospaceFont,
+            useDynamicType: stylesConfiguration.useDynamicType
         )
         
         let linkElement = LinkElement(
@@ -49,12 +53,16 @@ public class MarkdownTextStorage: NSTextStorage {
         let bulletElement = BulletElement(
             symbolsColor: stylesConfiguration.symbolsColor,
             textColor: stylesConfiguration.textColor,
-            font: stylesConfiguration.baseFont
+            font: stylesConfiguration.baseFont,
+            useDynamicType: stylesConfiguration.useDynamicType
         )
         
         let headerElement = HeaderElement(
             symbolsColor: stylesConfiguration.symbolsColor,
-            fontProvider: DefaultHeaderElementFontProvider(font: stylesConfiguration.baseFont)
+            fontProvider: DefaultHeaderElementFontProvider(
+                font: stylesConfiguration.baseFont,
+                useDynamicType: stylesConfiguration.useDynamicType
+            )
         )
 
         return [boldElement, italicElement, strikeElement, inlineCodeElement,
@@ -65,7 +73,8 @@ public class MarkdownTextStorage: NSTextStorage {
         self.stylesConfiguration = StylesConfiguration(
             baseFont: UIFont.systemFont(ofSize: 14),
             textColor: .black,
-            symbolsColor: .blue
+            symbolsColor: .blue,
+            useDynamicType: true
         )
         
         markdownParser = MarkdownParser(markdownElements: [])

@@ -11,13 +11,13 @@ import Foundation
 struct MarkdownParser {
     
     /// Markdown elements that will be used to process text values.
-    let markdownElements: [MarkdownElement]
+    public let markdownElements: [MarkdownElement]
     
     /// Creates a new instance of a `MarkdownParser` supplying the markdown elements to use when
     /// processing text.
     ///
     /// - Parameter markdownElements: Elements to use to identify markdown attributes.
-    init(markdownElements: [MarkdownElement]) {
+    public init(markdownElements: [MarkdownElement]) {
         self.markdownElements = markdownElements
     }
     

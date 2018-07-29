@@ -13,7 +13,8 @@ class BulletElementTests: XCTestCase {
     let element = BulletElement(
         symbolsColor: .red,
         textColor: .black,
-        font: UIFont.systemFont(ofSize: 10)
+        font: UIFont.systemFont(ofSize: 10),
+        useDynamicType: true
     )
     
     // MARK: Regex tests
@@ -89,6 +90,7 @@ class BulletElementTests: XCTestCase {
     // MARK: - Replacement ranges
     func testReplacementRanges_ReturnValidRanges() {
         let markdown = "- Hello"
+
         let expectedRanges = [
             ReplacementRange(
                 range: NSRange(location: 0, length: 2),
@@ -128,5 +130,13 @@ class BulletElementTests: XCTestCase {
         let fonts = configurations.map { element.applying(stylesConfiguration: $0).font }
         
         XCTAssertEqual(fonts, configurations.map { $0.baseFont })
+    }
+    
+    func testApplyStylesConfiguration_UpdateUseDynamicType() {
+        let configurations = StylesConfiguration.mockConfigurations()
+        
+        let useDynamicType = configurations.map { element.applying(stylesConfiguration: $0).useDynamicType }
+        
+        XCTAssertEqual(useDynamicType, configurations.map { $0.useDynamicType })
     }
 }

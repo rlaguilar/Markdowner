@@ -11,14 +11,18 @@ import Foundation
 /// - NOTE:
 ///     ## A header like this
 open class HeaderElement: MarkdownElement {
-    let symbolsColor: UIColor
-    let fontProvider: HeaderElementFontProvider
+    public let symbolsColor: UIColor
+    public let fontProvider: HeaderElementFontProvider
+    public let maxLevel: Int
     
-    public init(symbolsColor: UIColor, fontProvider: HeaderElementFontProvider) {
+    public init(symbolsColor: UIColor, fontProvider: HeaderElementFontProvider, maxLevel: Int = 6) {
+        guard maxLevel >= 1 else { fatalError() }
+        
         self.symbolsColor = symbolsColor
         self.fontProvider = fontProvider
+        self.maxLevel = maxLevel
         
-        guard let regex = try? NSRegularExpression(pattern: "^(#{1,6}) .+", options: .anchorsMatchLines) else {
+        guard let regex = try? NSRegularExpression(pattern: "^(#{1,\(maxLevel)}) .+", options: .anchorsMatchLines) else {
             fatalError()
         }
         
@@ -49,7 +53,8 @@ open class HeaderElement: MarkdownElement {
         let newFontProvider = fontProvider.applying(stylesConfiguration: stylesConfiguration)
         return HeaderElement(
             symbolsColor: stylesConfiguration.symbolsColor,
-            fontProvider: newFontProvider
+            fontProvider: newFontProvider,
+            maxLevel: maxLevel
         )
     }
     
@@ -89,20 +94,25 @@ public protocol HeaderElementFontProvider {
     func applying(stylesConfiguration: StylesConfiguration) -> Self
 }
 
-final class DefaultHeaderElementFontProvider: HeaderElementFontProvider {
+final public class DefaultHeaderElementFontProvider: HeaderElementFontProvider {
     let font: UIFont
+    let useDynamicType: Bool
     
-    public init(font: UIFont) {
+    public init(font: UIFont, useDynamicType: Bool) {
         self.font = font.adding(traits: .traitBold)
+        self.useDynamicType = useDynamicType
     }
     
     public func font(forLevel level: HeaderElement.Level) -> UIFont {
         let extraSize = CGFloat(HeaderElement.Level.maxLevel.rawValue - level.rawValue)
         let newFont = self.font.withSize(self.font.pointSize + extraSize)
-        return newFont.dynamic()
+        return useDynamicType ? newFont.dynamic() : newFont
     }
     
     public func applying(stylesConfiguration: StylesConfiguration) -> DefaultHeaderElementFontProvider {
-        return DefaultHeaderElementFontProvider(font: stylesConfiguration.baseFont)
+        return DefaultHeaderElementFontProvider(
+            font: stylesConfiguration.baseFont,
+            useDynamicType: stylesConfiguration.useDynamicType
+        )
     }
 }

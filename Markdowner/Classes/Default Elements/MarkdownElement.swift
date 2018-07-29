@@ -46,20 +46,27 @@ open class MarkdownElement {
     public struct Style {
         
         /// Key corresponding to the property that the style modifies.
-        let attributeKey: NSAttributedStringKey
+        public let attributeKey: NSAttributedStringKey
         
         /// Value to apply to the property to modify
-        let value: Any
+        public let value: Any
         
         /// Index at which the style should start to be applied.
-        let startIndex: Int
+        public let startIndex: Int
         
         /// Number of characteres, starting at `startIndex`, on which the style should be applied.
-        let length: Int
+        public let length: Int
         
         /// Range at which the style should be applied.
-        var range: NSRange {
+        public var range: NSRange {
             return NSRange(location: startIndex, length: length)
+        }
+        
+        public init(attributeKey: NSAttributedStringKey, value: Any, startIndex: Int, length: Int) {
+            self.attributeKey = attributeKey
+            self.value = value
+            self.startIndex = startIndex
+            self.length = length
         }
     }
 }

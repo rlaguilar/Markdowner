@@ -85,6 +85,16 @@ class HeaderElementTests: XCTestCase {
         XCTAssert(matches.isEmpty, "There is no content after the header indicator")
     }
     
+    func testRegex_DoesNotRecognizeMoreThanMaxLevel() {
+        let element = HeaderElement(symbolsColor: .red, fontProvider: fontProvider, maxLevel: 1)
+        
+        let markdown = "## Hello"
+        
+        let matches = element.regex.matches(in: markdown, options: [], range: markdown.range)
+        
+        XCTAssert(matches.isEmpty)
+    }
+    
     // MARK: - Styles tests
     func testStyles_ReturnsCorrectFontSize() {
         let samples = [
@@ -161,5 +171,14 @@ class HeaderElementTests: XCTestCase {
         let providers = configurations.map { element.applying(stylesConfiguration: $0).fontProvider }
         
         XCTAssertEqual(providers as? [MockHeaderElementFontProvider], expectedProviders)
+    }
+    
+    func testApplyStylesConfiguration_UpdateMaxLevel() {
+        let element = HeaderElement(symbolsColor: .red, fontProvider: fontProvider, maxLevel: 3)
+        let configurations = StylesConfiguration.mockConfigurations()
+        
+        let maxLevels = configurations.map { element.applying(stylesConfiguration: $0).maxLevel }
+        
+        XCTAssertEqual(maxLevels, configurations.map { _ in 3 })
     }
 }
