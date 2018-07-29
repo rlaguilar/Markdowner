@@ -11,14 +11,16 @@ import Foundation
 /// - NOTE:
 ///     ## A header like this
 open class HeaderElement: MarkdownElement {
-    let symbolsColor: UIColor
-    let fontProvider: HeaderElementFontProvider
+    public let symbolsColor: UIColor
+    public let fontProvider: HeaderElementFontProvider
+    public let maxLevel: Int
     
     public init(symbolsColor: UIColor, fontProvider: HeaderElementFontProvider, maxLevel: Int = 6) {
         guard maxLevel >= 1 else { fatalError() }
         
         self.symbolsColor = symbolsColor
         self.fontProvider = fontProvider
+        self.maxLevel = maxLevel
         
         guard let regex = try? NSRegularExpression(pattern: "^(#{1,\(maxLevel)}) .+", options: .anchorsMatchLines) else {
             fatalError()
@@ -51,7 +53,8 @@ open class HeaderElement: MarkdownElement {
         let newFontProvider = fontProvider.applying(stylesConfiguration: stylesConfiguration)
         return HeaderElement(
             symbolsColor: stylesConfiguration.symbolsColor,
-            fontProvider: newFontProvider
+            fontProvider: newFontProvider,
+            maxLevel: maxLevel
         )
     }
     

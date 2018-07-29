@@ -172,4 +172,13 @@ class HeaderElementTests: XCTestCase {
         
         XCTAssertEqual(providers as? [MockHeaderElementFontProvider], expectedProviders)
     }
+    
+    func testApplyStylesConfiguration_UpdateMaxLevel() {
+        let element = HeaderElement(symbolsColor: .red, fontProvider: fontProvider, maxLevel: 3)
+        let configurations = StylesConfiguration.mockConfigurations()
+        
+        let maxLevels = configurations.map { element.applying(stylesConfiguration: $0).maxLevel }
+        
+        XCTAssertEqual(maxLevels, configurations.map { _ in 3 })
+    }
 }
