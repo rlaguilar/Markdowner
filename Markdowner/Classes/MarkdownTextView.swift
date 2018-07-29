@@ -8,7 +8,7 @@
 import Foundation
 
 /// Custom text view class to display text as formatted markdown
-public class MarkdownTextView: UITextView {
+open class MarkdownTextView: UITextView {
     
     /// Object used as the style base for the markdown elements
     public var stylesConfiguration: StylesConfiguration {

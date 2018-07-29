@@ -9,7 +9,7 @@ import Foundation
 
 /// Custom `NSTextStorage` subclass that will render text as markdown.
 public class MarkdownTextStorage: NSTextStorage {
-    var stylesConfiguration: StylesConfiguration {
+    public var stylesConfiguration: StylesConfiguration {
         didSet {
             self.refreshContent()
         }
@@ -130,7 +130,28 @@ public class MarkdownTextStorage: NSTextStorage {
     }
     
     override public func processEditing() {
-        let paragraphRange = (string as NSString).paragraphRange(for: editedRange)
+        var paragraphRange = (string as NSString).paragraphRange(for: editedRange)
+        
+        let lastParagraphIndex = paragraphRange.location + paragraphRange.length - 1
+        let lastEditedIndex = max(
+            editedRange.location,
+            editedRange.location + editedRange.length - 1
+        )
+        
+        let changedParagraphTrailingBorder = lastParagraphIndex <= lastEditedIndex
+        let nextParagraphExists = lastParagraphIndex < string.count - 1
+        let nextParagraphShouldBeProcessed = changedParagraphTrailingBorder && nextParagraphExists
+        
+        if nextParagraphShouldBeProcessed {
+            // We need to process the next paragraph when the user press the enter key at the middle
+            // of a line. Since the paragraph for the edit is the one corresponding to the first
+            // half of the line, we also need to re-compute the styles for the second half to fix
+            // its styles. For instance, if the line is a header, we need to remove the header
+            // styles from the second line.
+            paragraphRange = (string as NSString).paragraphRange(
+                for: NSRange(location: paragraphRange.location, length: paragraphRange.length + 1)
+            )
+        }
         
         self.setAttributes(defaultAttributes, range: paragraphRange)
         
