@@ -26,8 +26,8 @@ struct MarkdownParser {
     ///
     /// - Parameter string: Markdown string to process.
     /// - Returns: List of ranges to be replaced from the string to create the markdown preview.
-    func replacementRanges(forString string: String) -> [ReplacementRange] {
-        let fullRange = NSRange(location: 0, length: string.count)
+    func replacementRanges(forString string: NSString) -> [ReplacementRange] {
+        let fullRange = NSRange(location: 0, length: string.length)
         var ranges: [ReplacementRange] = []
         
         iterateMatches(forString: string, atRange: fullRange) { (element, range, match) in
@@ -55,7 +55,7 @@ struct MarkdownParser {
     ///   - string: String value to compute its styles
     ///   - range: Only styles inside this range will be retrieved.
     /// - Returns: List of markdown styles for the given parameters.
-    func styles(forString string: String, atRange range: NSRange) -> [MarkdownElement.Style] {
+    func styles(forString string: NSString, atRange range: NSRange) -> [MarkdownElement.Style] {
         var styles: [MarkdownElement.Style] = []
         
         iterateMatches(forString: string, atRange: range) { (element, matchedRange, match) in
@@ -74,15 +74,11 @@ struct MarkdownParser {
         return styles.sorted(by: { $0.startIndex < $1.startIndex })
     }
     
-    private func iterateMatches(forString string: String, atRange range: NSRange, block: (MarkdownElement, NSRange, String) -> Void) {
+    private func iterateMatches(forString string: NSString, atRange range: NSRange, block: (MarkdownElement, NSRange, NSString) -> Void) {
         markdownElements.forEach { element in
-            element.regex.matches(in: string, options: [], range: range).forEach { result in
-                let matchedRange = result.range
-                let startIndex = string.index(string.startIndex, offsetBy: matchedRange.location)
-                let endIndex = string.index(startIndex, offsetBy: matchedRange.length)
-                let matchedStr = string[startIndex ..< endIndex]
-                let match = String(matchedStr)
-                block(element, matchedRange, match)
+            element.regex.matches(in: string as String, options: [], range: range).forEach { result in
+                let match = string.substring(with: result.range) as NSString
+                block(element, result.range, match)
             }
         }
     }

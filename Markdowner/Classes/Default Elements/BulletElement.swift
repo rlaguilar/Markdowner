@@ -30,7 +30,7 @@ open class BulletElement: MarkdownElement {
         super.init(regex: regex)
     }
     
-    open override func styles(forMatch match: String) -> [MarkdownElement.Style] {
+    open override func styles(forMatch match: NSString) -> [MarkdownElement.Style] {
         let indicatorColorStyle = Style.init(
             attributeKey: .foregroundColor,
             value: symbolsColor,
@@ -41,7 +41,7 @@ open class BulletElement: MarkdownElement {
         return [indicatorColorStyle]
     }
     
-    open override func replacementRanges(forMatch match: String) -> [ReplacementRange] {
+    open override func replacementRanges(forMatch match: NSString) -> [ReplacementRange] {
         let range = NSRange(location: 0, length: 2)
         let font = useDynamicType ? self.font.dynamic() : self.font
         

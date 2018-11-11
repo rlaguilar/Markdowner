@@ -74,7 +74,7 @@ class BulletElementTests: XCTestCase {
     
     // MARK: - Styles tests
     func testStyles_WhenCalled_ReturnsForegroundColorForIndicator() {
-        let samples = [
+        let samples: [NSString] = [
             "- Hello",
             "* Hello"
         ]
@@ -89,7 +89,7 @@ class BulletElementTests: XCTestCase {
     
     // MARK: - Replacement ranges
     func testReplacementRanges_ReturnValidRanges() {
-        let markdown = "- Hello"
+        let markdown: NSString = "- Hello"
 
         let expectedRanges = [
             ReplacementRange(

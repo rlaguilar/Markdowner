@@ -111,20 +111,20 @@ class InlineCodeElementTests: XCTestCase {
     
     // MARK: - Styles tests
     func testStyles_ReturnsCodeFont() {
-        let markdown = "`Hello`"
+        let markdown: NSString = "`Hello`"
         
         let fontStyle = element.styles(forMatch: markdown).first { $0.attributeKey == .font }
         
         XCTAssertEqual(fontStyle?.value as? UIFont, codeFont.dynamic())
-        XCTAssertEqual(fontStyle?.range, markdown.range, "The font should be applied the whole string")
+        XCTAssertEqual(fontStyle?.range, NSRange(location: 0, length: markdown.length), "The font should be applied the whole string")
     }
     
     func testStyles_ReturnsIndicatorsColor() {
-        let markdown = "`Hello`"
+        let markdown: NSString = "`Hello`"
         let expectedColors = [element.symbolsColor, element.symbolsColor]
         let expectedRanges = [
             NSRange(location: 0, length: 1),
-            NSRange(location: markdown.count - 1, length: 1)
+            NSRange(location: markdown.length - 1, length: 1)
         ]
         
         let styles = element.styles(forMatch: markdown)
@@ -137,14 +137,14 @@ class InlineCodeElementTests: XCTestCase {
     
     // MARK: - Replacement ranges
     func testReplacementRanges_ReturnValidRanges() {
-        let markdown = "`Hello`"
+        let markdown: NSString = "`Hello`"
         let expectedRanges = [
             ReplacementRange(
                 range: NSRange(location: 0, length: 1),
                 replacementValue: NSAttributedString()
             ),
             ReplacementRange(
-                range: NSRange(location: markdown.count - 1, length: 1),
+                range: NSRange(location: markdown.length - 1, length: 1),
                 replacementValue: NSAttributedString()
             )
         ]

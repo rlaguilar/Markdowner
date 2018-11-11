@@ -26,17 +26,17 @@ open class ItalicElement: MarkdownElement {
         super.init(regex: regex)
     }
     
-    open override func styles(forMatch match: String) -> [MarkdownElement.Style] {
+    open override func styles(forMatch match: NSString) -> [MarkdownElement.Style] {
         let fontStyle = Style(
             attributeKey: .fontTraits,
             value: UIFontDescriptorSymbolicTraits.traitItalic,
             startIndex: 0,
-            length: match.count
+            length: match.length
         )
         
         let indicatorRanges = [
             NSRange(location: 0, length: 1),
-            NSRange(location: match.count - 1, length: 1)
+            NSRange(location: match.length - 1, length: 1)
         ]
         
         let foregroundStyles = indicatorRanges.map {
@@ -55,8 +55,8 @@ open class ItalicElement: MarkdownElement {
         return ItalicElement(symbolsColor: stylesConfiguration.symbolsColor)
     }
     
-    open override func replacementRanges(forMatch match: String) -> [ReplacementRange] {
-        let ranges = [NSRange(location: 0, length: 1), NSRange(location: match.count - 1, length: 1)]
+    open override func replacementRanges(forMatch match: NSString) -> [ReplacementRange] {
+        let ranges = [NSRange(location: 0, length: 1), NSRange(location: match.length - 1, length: 1)]
         return ranges.map { ReplacementRange(range: $0, replacementValue: NSAttributedString()) }
     }
 }

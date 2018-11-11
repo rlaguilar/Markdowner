@@ -32,7 +32,7 @@ open class LinkElement: MarkdownElement {
         super.init(regex: regex)
     }
     
-    open override func styles(forMatch match: String) -> [MarkdownElement.Style] {
+    open override func styles(forMatch match: NSString) -> [MarkdownElement.Style] {
         let ranges = symbolRanges(forMatch: match)
         
         let symbolsColor = ranges.map { range in
@@ -72,12 +72,12 @@ open class LinkElement: MarkdownElement {
         return symbolsColor + textStyles
     }
     
-    open override func replacementRanges(forMatch match: String) -> [ReplacementRange] {
+    open override func replacementRanges(forMatch match: NSString) -> [ReplacementRange] {
         let symbolRanges = self.symbolRanges(forMatch: match)
         
         let urlPortionRange = NSRange(
             location: symbolRanges[2].location,
-            length: match.count - symbolRanges[2].location
+            length: match.length - symbolRanges[2].location
         )
         
         return [symbolRanges[0], symbolRanges[1], urlPortionRange].map {
@@ -93,10 +93,10 @@ open class LinkElement: MarkdownElement {
         )
     }
     
-    private func symbolRanges(forMatch match: String) -> [NSRange] {
-        let fullRange = NSRange(location: 0, length: match.count)
+    private func symbolRanges(forMatch match: NSString) -> [NSRange] {
+        let fullRange = NSRange(location: 0, length: match.length)
         
-        guard let regexMatch = regex.matches(in: match, options: [], range: fullRange).first else {
+        guard let regexMatch = regex.matches(in: match as String, options: [], range: fullRange).first else {
             fatalError("ERROR: Unable to find a match for the given ouput")
         }
         
