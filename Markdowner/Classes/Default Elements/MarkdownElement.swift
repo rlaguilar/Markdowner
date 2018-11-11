@@ -21,7 +21,7 @@ open class MarkdownElement {
     ///
     /// - Parameter match: String value that represent a match of the regular expression corresponding to `self`.
     /// - Returns: The list of styles that correspond to the match.
-    open func styles(forMatch match: String) -> [Style] {
+    open func styles(forMatch match: NSString) -> [Style] {
         return []
     }
     
@@ -38,7 +38,7 @@ open class MarkdownElement {
     ///
     /// - Parameter match: String value that represents a match of the regular expression corresponding to `self`.
     /// - Returns: The list of ranges that should be replaced from the match.
-    open func replacementRanges(forMatch match: String) -> [ReplacementRange] {
+    open func replacementRanges(forMatch match: NSString) -> [ReplacementRange] {
         return []
     }
     

@@ -29,14 +29,14 @@ open class HeaderElement: MarkdownElement {
         super.init(regex: regex)
     }
     
-    open override func styles(forMatch match: String) -> [MarkdownElement.Style] {
+    open override func styles(forMatch match: NSString) -> [MarkdownElement.Style] {
         let level = self.level(forMatch: match)
         
         let fontStyle = Style(
             attributeKey: .font,
             value: fontProvider.font(forLevel: level),
             startIndex: 0,
-            length: match.count
+            length: match.length
         )
         
         let indicatorForegroundStyle = Style(
@@ -58,17 +58,17 @@ open class HeaderElement: MarkdownElement {
         )
     }
     
-    open override func replacementRanges(forMatch match: String) -> [ReplacementRange] {
+    open override func replacementRanges(forMatch match: NSString) -> [ReplacementRange] {
         let matchLevel = self.level(forMatch: match)
         let range = NSRange(location: 0, length: matchLevel.rawValue + 1)
         let replacementRange = ReplacementRange(range: range, replacementValue: NSAttributedString())
         return [replacementRange]
     }
     
-    private func level(forMatch match: String) -> Level {
-        let fullRange = NSRange(location: 0, length: match.count)
+    private func level(forMatch match: NSString) -> Level {
+        let fullRange = NSRange(location: 0, length: match.length)
         
-        guard let regexMatch = regex.matches(in: match, options: [], range: fullRange).first else {
+        guard let regexMatch = regex.matches(in: match as String, options: [], range: fullRange).first else {
             fatalError("ERROR: Unable to find match for the given input")
         }
         

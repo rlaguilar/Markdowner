@@ -109,20 +109,20 @@ class BoldElementTests: XCTestCase {
     
     // MARK: - Styles tests
     func testStyles_ReturnsBoldTrait() {
-        let markdown = "**Hello**"
+        let markdown: NSString = "**Hello**"
         
         let fontTraits = element.styles(forMatch: markdown).first { $0.attributeKey == .fontTraits }
         
         XCTAssertEqual(fontTraits?.value as? UIFontDescriptorSymbolicTraits, .traitBold)
-        XCTAssertEqual(fontTraits?.range, markdown.range, "The traits should be applied the whole string")
+        XCTAssertEqual(fontTraits?.range, NSRange(location: 0, length: markdown.length), "The traits should be applied the whole string")
     }
     
     func testStyles_ReturnsIndicatorsColor() {
-        let markdown = "**Hello**"
+        let markdown: NSString = "**Hello**"
         let expectedColors = [element.symbolsColor, element.symbolsColor]
         let expectedRanges = [
             NSRange(location: 0, length: 2),
-            NSRange(location: markdown.count - 2, length: 2)
+            NSRange(location: markdown.length - 2, length: 2)
         ]
         
         let styles = element.styles(forMatch: markdown)
@@ -135,14 +135,14 @@ class BoldElementTests: XCTestCase {
     
     // MARK: - Replacement ranges
     func testReplacementRanges_ReturnValidRanges() {
-        let markdown = "**Hello**"
+        let markdown: NSString = "**Hello**"
         let expectedRanges = [
             ReplacementRange(
                 range: NSRange(location: 0, length: 2),
                 replacementValue: NSAttributedString()
             ),
             ReplacementRange(
-                range: NSRange(location: markdown.count - 2, length: 2),
+                range: NSRange(location: markdown.length - 2, length: 2),
                 replacementValue: NSAttributedString()
             )
         ]

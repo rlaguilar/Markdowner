@@ -97,7 +97,7 @@ class HeaderElementTests: XCTestCase {
     
     // MARK: - Styles tests
     func testStyles_ReturnsCorrectFontSize() {
-        let samples = [
+        let samples: [NSString] = [
             "# Hello",
             "## Hello",
             "### Hello",
@@ -117,7 +117,7 @@ class HeaderElementTests: XCTestCase {
     }
     
     func testStyles_ReturnsCorrectForegroundColor() {
-        let samples = [
+        let samples: [NSString] = [
             "# Hello",
             "## Hello",
             "### Hello",
@@ -141,7 +141,7 @@ class HeaderElementTests: XCTestCase {
     
     // MARK: - Replacement ranges
     func testReplacementRanges_ReturnValidRanges() {
-        let markdown = "## Hello"
+        let markdown: NSString = "## Hello"
         let expectedRanges = [
             ReplacementRange(
                 range: NSRange(location: 0, length: 3),

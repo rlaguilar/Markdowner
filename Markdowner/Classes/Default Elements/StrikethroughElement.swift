@@ -22,17 +22,17 @@ open class StrikethroughElement: MarkdownElement {
         super.init(regex: regex)
     }
     
-    open override func styles(forMatch match: String) -> [MarkdownElement.Style] {
+    open override func styles(forMatch match: NSString) -> [MarkdownElement.Style] {
         let strikeStyle = Style(
             attributeKey: .strikethroughStyle,
             value: NSUnderlineStyle.styleSingle.rawValue,
             startIndex: 2,
-            length: match.count - 4
+            length: match.length - 4
         )
         
         let indicatorRanges = [
             NSRange(location: 0, length: 2),
-            NSRange(location: match.count - 2, length: 2)
+            NSRange(location: match.length - 2, length: 2)
         ]
         
         let foregroundStyles = indicatorRanges.map {
@@ -51,8 +51,8 @@ open class StrikethroughElement: MarkdownElement {
         return StrikethroughElement(symbolsColor: stylesConfiguration.symbolsColor)
     }
     
-    open override func replacementRanges(forMatch match: String) -> [ReplacementRange] {
-        let ranges = [NSRange(location: 0, length: 2), NSRange(location: match.count - 2, length: 2)]
+    open override func replacementRanges(forMatch match: NSString) -> [ReplacementRange] {
+        let ranges = [NSRange(location: 0, length: 2), NSRange(location: match.length - 2, length: 2)]
         return ranges.map { ReplacementRange(range: $0, replacementValue: NSAttributedString()) }
     }
 }

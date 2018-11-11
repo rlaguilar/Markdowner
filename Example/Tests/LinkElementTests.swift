@@ -120,7 +120,7 @@ class LinkElementTests: XCTestCase {
     
     // MARK: - Styles tests
     func testStyles_ReturnsValidStylesCount() {
-        let markdown = "[a](sample.com)"
+        let markdown: NSString = "[a](sample.com)"
         
         let styles = element.styles(forMatch: markdown)
         
@@ -129,7 +129,7 @@ class LinkElementTests: XCTestCase {
     }
     
     func testStyles_ReturnsLinkAction() {
-        let markdown = "[A](sample.com)"
+        let markdown: NSString = "[A](sample.com)"
         
         let linkAction = element.styles(forMatch: markdown).first { $0.attributeKey == .link }
         
@@ -138,7 +138,7 @@ class LinkElementTests: XCTestCase {
     }
     
     func testStyles_ReturnsLinkColor() {
-        let markdown = "[A](www.sample.com)"
+        let markdown: NSString = "[A](www.sample.com)"
         
         let linkColor = element.styles(forMatch: markdown)
             .first { $0.attributeKey == .foregroundColor && $0.startIndex == 1 }
@@ -148,7 +148,7 @@ class LinkElementTests: XCTestCase {
     }
     
     func testStyles_ReturnsIndicatorsColor() {
-        let markdown = "[a](www.s.com)"
+        let markdown: NSString = "[a](www.s.com)"
         
         let expectedRanges = [
             NSRange(location: 0, length: 1),
@@ -169,7 +169,7 @@ class LinkElementTests: XCTestCase {
     
     // MARK: - Replacement ranges
     func testReplacementRanges_ReturnValidRanges() {
-        let markdown = "[a](sample.com)"
+        let markdown: NSString = "[a](sample.com)"
         let expectedRanges = [
             ReplacementRange(
                 range: NSRange(location: 0, length: 1),

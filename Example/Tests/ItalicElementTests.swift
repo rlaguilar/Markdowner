@@ -117,20 +117,20 @@ class ItalicElementTests: XCTestCase {
     
     // MARK: - Styles tests
     func testStyles_ReturnsItalicFontTrait() {
-        let markdown = "*Hello*"
-        
+        let markdown: NSString = "*Hello*"
+
         let fontTraits = element.styles(forMatch: markdown).first { $0.attributeKey == .fontTraits }
         
         XCTAssertEqual(fontTraits?.value as? UIFontDescriptorSymbolicTraits, .traitItalic)
-        XCTAssertEqual(fontTraits?.range, markdown.range, "The traits should be applied the whole string")
+        XCTAssertEqual(fontTraits?.range, NSRange(location: 0, length: markdown.length), "The traits should be applied the whole string")
     }
     
     func testStyles_ReturnsIndicatorsColor() {
-        let markdown = "_Hello_"
+        let markdown: NSString = "_Hello_"
         let expectedColors = [element.symbolsColor, element.symbolsColor]
         let expectedRanges = [
             NSRange(location: 0, length: 1),
-            NSRange(location: markdown.count - 1, length: 1)
+            NSRange(location: markdown.length - 1, length: 1)
         ]
         
         let styles = element.styles(forMatch: markdown)
@@ -143,14 +143,14 @@ class ItalicElementTests: XCTestCase {
     
     // MARK: - Replacement ranges
     func testReplacementRanges_ReturnValidRanges() {
-        let markdown = "_Hello_"
+        let markdown: NSString = "_Hello_"
         let expectedRanges = [
             ReplacementRange(
                 range: NSRange(location: 0, length: 1),
                 replacementValue: NSAttributedString()
             ),
             ReplacementRange(
-                range: NSRange(location: markdown.count - 1, length: 1),
+                range: NSRange(location: markdown.length - 1, length: 1),
                 replacementValue: NSAttributedString()
             )
         ]

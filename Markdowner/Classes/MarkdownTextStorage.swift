@@ -104,7 +104,7 @@ public class MarkdownTextStorage: NSTextStorage {
     public func attributedString(removingMarkdownSymbols: Bool = true) -> NSAttributedString {
         guard removingMarkdownSymbols else { return self }
         
-        let rangesToRemove = markdownParser.replacementRanges(forString: string)
+        let rangesToRemove = markdownParser.replacementRanges(forString: string as NSString)
         
         let originalString = NSMutableAttributedString(attributedString: self)
         
@@ -130,7 +130,8 @@ public class MarkdownTextStorage: NSTextStorage {
     
     override public func replaceCharacters(in range: NSRange, with str: String) {
         backingString.replaceCharacters(in: range, with: str)
-        self.edited(.editedCharacters, range: range, changeInLength: str.count - range.length)
+        
+        self.edited(.editedCharacters, range: range, changeInLength: str.utf16.count - range.length)
     }
     
     override public func setAttributes(_ attrs: [NSAttributedStringKey : Any]?, range: NSRange) {
@@ -139,7 +140,8 @@ public class MarkdownTextStorage: NSTextStorage {
     }
     
     override public func processEditing() {
-        var paragraphRange = (string as NSString).paragraphRange(for: editedRange)
+        let string = self.string as NSString
+        var paragraphRange = string.paragraphRange(for: editedRange)
         
         let lastParagraphIndex = paragraphRange.location + paragraphRange.length - 1
         let lastEditedIndex = max(
@@ -148,7 +150,7 @@ public class MarkdownTextStorage: NSTextStorage {
         )
         
         let changedParagraphTrailingBorder = lastParagraphIndex <= lastEditedIndex
-        let nextParagraphExists = lastParagraphIndex < string.count - 1
+        let nextParagraphExists = lastParagraphIndex < string.length - 1
         let nextParagraphShouldBeProcessed = changedParagraphTrailingBorder && nextParagraphExists
         
         if nextParagraphShouldBeProcessed {
@@ -157,7 +159,7 @@ public class MarkdownTextStorage: NSTextStorage {
             // half of the line, we also need to re-compute the styles for the second half to fix
             // its styles. For instance, if the line is a header, we need to remove the header
             // styles from the second line.
-            paragraphRange = (string as NSString).paragraphRange(
+            paragraphRange = string.paragraphRange(
                 for: NSRange(location: paragraphRange.location, length: paragraphRange.length + 1)
             )
         }
@@ -196,7 +198,7 @@ public class MarkdownTextStorage: NSTextStorage {
         
         markdownParser = MarkdownParser(markdownElements: newMarkdowElements)
         
-        let fullRange = NSRange(location: 0, length: string.count)
+        let fullRange = NSRange(location: 0, length: string.utf16.count)
         
         self.edited(.editedAttributes, range: fullRange, changeInLength: 0)
     }

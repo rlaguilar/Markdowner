@@ -109,8 +109,8 @@ class StrikethroughElementTests: XCTestCase {
     
     // MARK: - Styles tests
     func testStyles_ReturnsStrikethroughSyle() {
-        let markdown = "~~Hello~~"
-        let expectedRange = NSRange(location: 2, length: markdown.count - 4)
+        let markdown: NSString = "~~Hello~~"
+        let expectedRange = NSRange(location: 2, length: markdown.length - 4)
         
         let strikethrough = element.styles(forMatch: markdown).first { $0.attributeKey == .strikethroughStyle }
         
@@ -119,11 +119,11 @@ class StrikethroughElementTests: XCTestCase {
     }
     
     func testStyles_ReturnsIndicatorsColor() {
-        let markdown = "~~Hello~~"
+        let markdown: NSString = "~~Hello~~"
         let expectedColors = [element.symbolsColor, element.symbolsColor]
         let expectedRanges = [
             NSRange(location: 0, length: 2),
-            NSRange(location: markdown.count - 2, length: 2)
+            NSRange(location: markdown.length - 2, length: 2)
         ]
         
         let styles = element.styles(forMatch: markdown)
@@ -136,14 +136,14 @@ class StrikethroughElementTests: XCTestCase {
     
     // MARK: - Replacement ranges
     func testReplacementRanges_ReturnValidRanges() {
-        let markdown = "~~Hello~~"
+        let markdown: NSString = "~~Hello~~"
         let expectedRanges = [
             ReplacementRange(
                 range: NSRange(location: 0, length: 2),
                 replacementValue: NSAttributedString()
             ),
             ReplacementRange(
-                range: NSRange(location: markdown.count - 2, length: 2),
+                range: NSRange(location: markdown.length - 2, length: 2),
                 replacementValue: NSAttributedString()
             )
         ]
