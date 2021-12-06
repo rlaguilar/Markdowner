@@ -23,7 +23,7 @@ public class MarkdownTextStorage: NSTextStorage {
     
     private let backingString = NSMutableAttributedString()
 
-    public init(elementsConfig: MarkdownElementsConfig = .defaultConfig()) {
+    public init(elementsConfig: MarkdownElementsConfig = .init()) {
         self.elementsConfig = elementsConfig
         markdownParser = MarkdownParser(markdownElements: elementsConfig.enabledElements())
         super.init()

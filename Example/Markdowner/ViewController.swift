@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         let content = try! String(contentsOf: contentURL)
         
         textView.text = content
-        self.textView.elementsConfig = MarkdownElementsConfig.defaultConfig().overriding(
+        self.textView.elementsConfig = MarkdownElementsConfig().overriding(
             style: StylesConfiguration(
                 baseFont: UIFont.systemFont(ofSize: 18),
                 textColor: UIColor.darkGray,

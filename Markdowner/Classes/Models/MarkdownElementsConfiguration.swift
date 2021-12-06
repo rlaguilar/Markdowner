@@ -21,31 +21,6 @@ public struct MarkdownElementsConfig {
 
     public let customElements: [MarkdownElement]
 
-    public static func defaultConfig() -> MarkdownElementsConfig {
-        func defaultCodeFont(style: StylesConfiguration) -> UIFont {
-            guard let monospaceFont = UIFont(name: "Menlo-Regular", size: style.baseFont.pointSize) else {
-                assertionFailure("Menlo font isn't available")
-                return style.baseFont
-            }
-
-            return monospaceFont
-        }
-
-        let style = StylesConfiguration.default
-
-        return MarkdownElementsConfig(
-            style: style,
-            boldConfig: .enabled,
-            italicConfig: .enabled,
-            strikethroughConfig: .enabled,
-            headerConfig: .enabled(maxLevel: .max),
-            bulletConfig: .enabled,
-            linkConfig: .enabled(linkColor: UIColor.lightGray),
-            inlineCodeConfig: .enabled(codeFont: defaultCodeFont(style: style)),
-            customElements: []
-        )
-    }
-
     public func overriding(
         style: StylesConfiguration? = nil,
         boldConfig: SimpleElementConfig? = nil,
@@ -151,6 +126,29 @@ public struct MarkdownElementsConfig {
         }
 
         return InlineCodeElement(symbolsColor: style.symbolsColor, font: codeFont, useDynamicType: style.useDynamicType)
+    }
+}
+
+public extension MarkdownElementsConfig {
+    init() {
+        func defaultCodeFont(style: StylesConfiguration) -> UIFont {
+            guard let monospaceFont = UIFont(name: "Menlo-Regular", size: style.baseFont.pointSize) else {
+                assertionFailure("Menlo font isn't available")
+                return style.baseFont
+            }
+
+            return monospaceFont
+        }
+
+        style = StylesConfiguration.default
+        boldConfig = .enabled
+        italicConfig = .enabled
+        strikethroughConfig = .enabled
+        headerConfig = .enabled(maxLevel: .max)
+        bulletConfig = .enabled
+        linkConfig = .enabled(linkColor: UIColor.lightGray)
+        inlineCodeConfig = .enabled(codeFont: defaultCodeFont(style: style))
+        customElements = []
     }
 }
 
