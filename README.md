@@ -35,7 +35,7 @@ textView.text = ... // set the initial markdown to display, if any
 
 ```
 
-If you want to customize the default look of the markdown elements, you can use the class `StylesConfiguration`.
+If you want to customize the default look of the markdown elements, you can use the class `MarkdownElementsConfig`.
 
 ```swift
 textView.elementsConfig = MarkdownElementsConfig.defaultConfig().overriding(
@@ -48,7 +48,7 @@ textView.elementsConfig = MarkdownElementsConfig.defaultConfig().overriding(
 )
 ```
 
-You can also choose which standard markdown elements are available and how they will work. The following example only recognizes headers from level 1 to 3, and disable links:
+You can also choose which standard markdown elements are available and how they will work. The following example recognizes headers from level 1 to 3, and disable links:
 
 ```swift
 self.textView.elementsConfig = MarkdownElementsConfig.defaultConfig().overriding(
@@ -61,8 +61,9 @@ Creating custom elements is as simple as subclassing the type `MarkdownElement`,
 
 ```swift
 self.textView.elementsConfig = MarkdownElementsConfig.defaultConfig().overriding(
-    customElements: [CustomElement1(), CustomElement2]
+    customElements: [CustomElement1(), CustomElement2()]
 )
+```
 
 As a guide for creating new elements, you could use any of the already implemented ones inside the folder `Markdowner/Classes/Default Elements`.
 
