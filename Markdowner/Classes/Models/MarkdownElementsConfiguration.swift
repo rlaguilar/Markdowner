@@ -81,7 +81,7 @@ public struct MarkdownElementsConfig {
             inlineElement()
         ].compactMap { $0 }
 
-        return standardElements + customElements
+        return standardElements + customElements.map { $0.applying(stylesConfiguration: style) }
     }
 
     // MARK: - Instantiate standard elements
