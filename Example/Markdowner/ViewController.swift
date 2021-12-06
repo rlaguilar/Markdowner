@@ -35,8 +35,7 @@ class ViewController: UIViewController {
                 textColor: UIColor.darkGray,
                 symbolsColor: UIColor.red,
                 useDynamicType: true
-            ),
-            headerConfig: .enabled(maxLevel: .max)
+            )
         )
     }
     
