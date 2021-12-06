@@ -1,6 +1,5 @@
 # Markdowner
 
-[![CI Status](https://img.shields.io/travis/rlaguilar/Markdowner.svg?style=flat)](https://travis-ci.org/rlaguilar/Markdowner)
 [![Version](https://img.shields.io/cocoapods/v/Markdowner.svg?style=flat)](https://cocoapods.org/pods/Markdowner)
 [![License](https://img.shields.io/cocoapods/l/Markdowner.svg?style=flat)](https://cocoapods.org/pods/Markdowner)
 [![Platform](https://img.shields.io/cocoapods/p/Markdowner.svg?style=flat)](https://cocoapods.org/pods/Markdowner)
@@ -36,19 +35,39 @@ textView.text = ... // set the initial markdown to display, if any
 
 ```
 
-If you want to customize the default look of the markdown elements, you can use the class `StylesConfiguration`.
+If you want to customize the default look of the markdown elements, you can use the class `MarkdownElementsConfig`.
 
 ```swift
-textView.stylesConfiguration = StylesConfiguration(
-    baseFont: UIFont.systemFont(ofSize: 18),
-    textColor: UIColor.darkGray,
-    symbolsColor: UIColor.red
+textView.elementsConfig = MarkdownElementsConfig().overriding(
+    style: StylesConfiguration(
+        baseFont: UIFont.systemFont(ofSize: 18),
+        textColor: UIColor.darkGray,
+        symbolsColor: UIColor.red,
+        useDynamicType: true
+    )
 )
 ```
 
-Creating custom elements is as simple as subclassing the type `MarkdownElement`, and then calling the function `textView.use(elements: [MarkdownElement])` passing as arguments the list of markdown elements that you want to use. As a guide for creating new elements you could use any of the already implemented ones inside the folder `Markdowner/Classes/Default Elements`.
+You can also choose which standard markdown elements are available and how they will work. The following example recognizes headers from level 1 to 3, and disable links:
 
-It's important to note that for now `Markdowner` doesn't support initialization from Storyboards.
+```swift
+self.textView.elementsConfig = MarkdownElementsConfig().overriding(
+    headerConfig: .enabled(maxLevel: .h3),
+    linkConfig: .disabled
+)
+```
+
+Creating custom elements is as simple as subclassing the type `MarkdownElement`, and then provide instances of those custom elements via the same `overriding` function:
+
+```swift
+self.textView.elementsConfig = MarkdownElementsConfig().overriding(
+    customElements: [CustomElement1(), CustomElement2()]
+)
+```
+
+As a guide for creating new elements, you could use any of the already implemented ones inside the folder `Markdowner/Classes/Default Elements`.
+
+> NOTE: `Markdowner` doesn't support initialization from Storyboards currently.
 
 ## Author
 

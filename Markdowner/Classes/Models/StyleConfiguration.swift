@@ -9,7 +9,13 @@ import Foundation
 
 /// Object used to provide a common look and feel to the markdown text.
 open class StylesConfiguration {
-    
+    public static let `default` = StylesConfiguration(
+        baseFont: UIFont.systemFont(ofSize: 14),
+        textColor: .black,
+        symbolsColor: .blue,
+        useDynamicType: true
+    )
+
     /// Base font that will be used to display the markdown content.
     public let baseFont: UIFont
     
