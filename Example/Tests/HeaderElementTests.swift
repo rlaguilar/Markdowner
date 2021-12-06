@@ -86,7 +86,7 @@ class HeaderElementTests: XCTestCase {
     }
     
     func testRegex_DoesNotRecognizeMoreThanMaxLevel() {
-        let element = HeaderElement(symbolsColor: .red, fontProvider: fontProvider, maxLevel: 1)
+        let element = HeaderElement(symbolsColor: .red, fontProvider: fontProvider, maxLevel: .h1)
         
         let markdown = "## Hello"
         
@@ -174,11 +174,11 @@ class HeaderElementTests: XCTestCase {
     }
     
     func testApplyStylesConfiguration_UpdateMaxLevel() {
-        let element = HeaderElement(symbolsColor: .red, fontProvider: fontProvider, maxLevel: 3)
+        let element = HeaderElement(symbolsColor: .red, fontProvider: fontProvider, maxLevel: .h3)
         let configurations = StylesConfiguration.mockConfigurations()
         
         let maxLevels = configurations.map { element.applying(stylesConfiguration: $0).maxLevel }
         
-        XCTAssertEqual(maxLevels, configurations.map { _ in 3 })
+        XCTAssertEqual(maxLevels, configurations.map { _ in .h3 })
     }
 }

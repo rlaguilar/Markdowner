@@ -9,11 +9,9 @@ import Foundation
 
 /// Custom text view class to display text as formatted markdown
 open class MarkdownTextView: UITextView {
-    
-    /// Object used as the style base for the markdown elements
-    public var stylesConfiguration: StylesConfiguration {
-        get { return markdownStorage.stylesConfiguration }
-        set { markdownStorage.stylesConfiguration = newValue }
+    public var elementsConfig: MarkdownElementsConfig {
+        get { return markdownStorage.elementsConfig }
+        set { markdownStorage.elementsConfig = newValue }
     }
     
     private let markdownStorage: MarkdownTextStorage
@@ -35,13 +33,6 @@ open class MarkdownTextView: UITextView {
         // isn't working, even when the Apple docs state that it should be as simple as calling:
         // `markdownStorage.addLayoutManager(self.layoutManager)`
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    /// Indicates to the storage the set of markdown elements that will be used to process the text.
-    ///
-    /// - Parameter elements: Markdown elements to use (they can be custom elements or the default ones).
-    public func use(elements: [MarkdownElement]) {
-        markdownStorage.use(elements: elements)
     }
     
     /// Retrieves an attributted string containing a preview of the content displayed in the text view

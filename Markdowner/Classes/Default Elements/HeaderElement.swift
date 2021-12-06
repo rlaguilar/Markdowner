@@ -13,16 +13,14 @@ import Foundation
 open class HeaderElement: MarkdownElement {
     public let symbolsColor: UIColor
     public let fontProvider: HeaderElementFontProvider
-    public let maxLevel: Int
+    public let maxLevel: Level
     
-    public init(symbolsColor: UIColor, fontProvider: HeaderElementFontProvider, maxLevel: Int = 6) {
-        guard maxLevel >= 1 else { fatalError() }
-        
+    public init(symbolsColor: UIColor, fontProvider: HeaderElementFontProvider, maxLevel: Level = .max) {
         self.symbolsColor = symbolsColor
         self.fontProvider = fontProvider
         self.maxLevel = maxLevel
         
-        guard let regex = try? NSRegularExpression(pattern: "^(#{1,\(maxLevel)}) .+", options: .anchorsMatchLines) else {
+        guard let regex = try? NSRegularExpression(pattern: "^(#{1,\(maxLevel.rawValue)}) .+", options: .anchorsMatchLines) else {
             fatalError()
         }
         
@@ -84,7 +82,7 @@ open class HeaderElement: MarkdownElement {
     public enum Level: Int {
         case h1 = 1, h2, h3, h4, h5, h6
         
-        static let maxLevel = Level.h6
+        public static let max = Level.h6
     }
 }
 
@@ -104,7 +102,7 @@ final public class DefaultHeaderElementFontProvider: HeaderElementFontProvider {
     }
     
     public func font(forLevel level: HeaderElement.Level) -> UIFont {
-        let extraSize = CGFloat(HeaderElement.Level.maxLevel.rawValue - level.rawValue)
+        let extraSize = CGFloat(HeaderElement.Level.max.rawValue - level.rawValue)
         let newFont = self.font.withSize(self.font.pointSize + extraSize)
         return useDynamicType ? newFont.dynamic() : newFont
     }

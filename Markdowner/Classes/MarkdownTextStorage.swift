@@ -9,91 +9,28 @@ import Foundation
 
 /// Custom `NSTextStorage` subclass that will render text as markdown.
 public class MarkdownTextStorage: NSTextStorage {
-    public var stylesConfiguration: StylesConfiguration {
+    public var elementsConfig: MarkdownElementsConfig {
         didSet {
-            self.refreshContent()
+            // refresh rendered content after elements config changes
+            markdownParser = MarkdownParser(markdownElements: elementsConfig.enabledElements())
+
+            let fullRange = NSRange(location: 0, length: string.utf16.count)
+            self.edited(.editedAttributes, range: fullRange, changeInLength: 0)
         }
     }
     
     private var markdownParser: MarkdownParser
     
     private let backingString = NSMutableAttributedString()
-    
-    private var defaultAttributes: [NSAttributedStringKey: Any] {
-        let baseFont = stylesConfiguration.baseFont
-        let font = stylesConfiguration.useDynamicType ? baseFont.dynamic() : baseFont
-        
-        return [
-            .font: font,
-            .foregroundColor: stylesConfiguration.textColor
-        ]
-    }
-    
-    private var defaultElements: [MarkdownElement] {
-        let boldElement = BoldElement(symbolsColor: stylesConfiguration.symbolsColor)
-        let italicElement = ItalicElement(symbolsColor: stylesConfiguration.symbolsColor)
-        let strikeElement = StrikethroughElement(symbolsColor: stylesConfiguration.symbolsColor)
-        
-        guard let monospaceFont = UIFont(name: "Menlo-Regular", size: stylesConfiguration.baseFont.pointSize) else {
-            fatalError()
-        }
-        
-        let inlineCodeElement = InlineCodeElement(
-            symbolsColor: stylesConfiguration.symbolsColor,
-            font: monospaceFont,
-            useDynamicType: stylesConfiguration.useDynamicType
-        )
-        
-        let linkElement = LinkElement(
-            symbolsColor: stylesConfiguration.symbolsColor,
-            font: stylesConfiguration.baseFont,
-            linksColor: UIColor.lightGray
-        )
-        
-        let bulletElement = BulletElement(
-            symbolsColor: stylesConfiguration.symbolsColor,
-            textColor: stylesConfiguration.textColor,
-            font: stylesConfiguration.baseFont,
-            useDynamicType: stylesConfiguration.useDynamicType
-        )
-        
-        let headerElement = HeaderElement(
-            symbolsColor: stylesConfiguration.symbolsColor,
-            fontProvider: DefaultHeaderElementFontProvider(
-                font: stylesConfiguration.baseFont,
-                useDynamicType: stylesConfiguration.useDynamicType
-            )
-        )
 
-        return [boldElement, italicElement, strikeElement, inlineCodeElement,
-                linkElement, bulletElement, headerElement]
-    }
-    
-    public override init() {
-        self.stylesConfiguration = StylesConfiguration(
-            baseFont: UIFont.systemFont(ofSize: 14),
-            textColor: .black,
-            symbolsColor: .blue,
-            useDynamicType: true
-        )
-        
-        markdownParser = MarkdownParser(markdownElements: [])
-
+    public init(elementsConfig: MarkdownElementsConfig = .defaultConfig()) {
+        self.elementsConfig = elementsConfig
+        markdownParser = MarkdownParser(markdownElements: elementsConfig.enabledElements())
         super.init()
-        
-        self.use(elements: defaultElements)
     }
     
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    /// Indicates to the storage the set of markdown elements that will be used to process the text.
-    ///
-    /// - Parameter elements: Markdown elements to use (they can be custom elements or the default ones).
-    public func use(elements: [MarkdownElement]) {
-        self.markdownParser = MarkdownParser(markdownElements: elements)
-        self.refreshContent()
     }
     
     /// Retrieves an attributted string containing a preview of the content inside this storage.
@@ -163,6 +100,16 @@ public class MarkdownTextStorage: NSTextStorage {
                 for: NSRange(location: paragraphRange.location, length: paragraphRange.length + 1)
             )
         }
+
+        var defaultAttributes: [NSAttributedStringKey: Any] {
+            let baseFont = elementsConfig.style.baseFont
+            let font = elementsConfig.style.useDynamicType ? baseFont.dynamic() : baseFont
+
+            return [
+                .font: font,
+                .foregroundColor: elementsConfig.style.textColor
+            ]
+        }
         
         self.setAttributes(defaultAttributes, range: paragraphRange)
         
@@ -190,16 +137,5 @@ public class MarkdownTextStorage: NSTextStorage {
         }
         
         super.processEditing()
-    }
-    
-    private func refreshContent() {
-        let newMarkdowElements = markdownParser.markdownElements
-            .map { $0.applying(stylesConfiguration: stylesConfiguration) }
-        
-        markdownParser = MarkdownParser(markdownElements: newMarkdowElements)
-        
-        let fullRange = NSRange(location: 0, length: string.utf16.count)
-        
-        self.edited(.editedAttributes, range: fullRange, changeInLength: 0)
     }
 }
